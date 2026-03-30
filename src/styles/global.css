@@ -24,6 +24,10 @@
   --color-grey-700: #3a3a3a;
   --color-black: #000000;
 
+  /* Secondary Accents */
+  --color-accent-blue: #2563eb;
+  --color-accent-green: #059669;
+
   /* Typography */
   --font-body: 'Poppins', system-ui, -apple-system, sans-serif;
   --font-heading: 'Inter', system-ui, -apple-system, sans-serif;
@@ -386,6 +390,40 @@ p {
   margin-inline: auto;
 }
 
+/* ── Skip Link ── */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10000;
+  padding: 0.75rem 1.5rem;
+  background: var(--color-navy);
+  color: var(--color-white);
+  font-family: var(--font-heading);
+  font-size: 0.875rem;
+  font-weight: var(--fw-semibold);
+  border-radius: var(--border-radius-sm);
+  text-decoration: none;
+  transition: top var(--transition-fast);
+}
+
+.skip-link:focus {
+  top: var(--space-md);
+}
+
+/* ── Focus States ── */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 4px rgba(226, 0, 26, 0.15);
+}
+
 /* ── Scroll Progress ── */
 .scroll-progress {
   position: fixed;
@@ -396,4 +434,25 @@ p {
   background: var(--color-primary);
   z-index: 9999;
   transition: width 50ms linear;
+}
+
+/* ── Reduced Motion ── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .animate-on-scroll {
+    opacity: 1;
+    transform: none;
+  }
+
+  .scroll-progress {
+    transition: none;
+  }
 }

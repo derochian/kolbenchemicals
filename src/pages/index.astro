@@ -10,28 +10,24 @@ const stats = [
 
 const valueProps = [
   {
-    icon: '🔬',
-    iconAlt: 'flask',
     title: 'German Engineering',
     description: 'Every formula developed and tested in Germany with precision that meets the highest automotive standards.',
+    iconSvg: '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3L12 6L15 3"/><path d="M12 6V21"/><path d="M6 12H2L5 9"/><path d="M18 12H22L19 9"/><path d="M6 12L9 15"/><path d="M18 12L15 15"/><circle cx="12" cy="15" r="3"/></svg>',
   },
   {
-    icon: '🏭',
-    iconAlt: 'factory',
     title: 'OEM Certified',
     description: 'Trusted by BMW, Mercedes-Benz, Volkswagen, and more. Our products meet original equipment specifications.',
+    iconSvg: '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>',
   },
   {
-    icon: '🌍',
-    iconAlt: 'globe',
     title: 'Global Distribution',
     description: 'Worldwide logistics network delivering to over 10,000 customers across every major automotive market.',
+    iconSvg: '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>',
   },
   {
-    icon: '⚡',
-    iconAlt: 'lightning',
     title: '48hr Delivery',
     description: 'Rapid fulfillment infrastructure ensures your shelves stay stocked and your operations never pause.',
+    iconSvg: '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14H12L11 22L21 10H12L13 2Z"/></svg>',
   },
 ];
 
@@ -48,14 +44,14 @@ const productCategories = [
     description: 'Precision-formulated oils and fluids engineered in Germany to reduce wear, control heat, and maintain system efficiency.',
     items: ['Engine Oil', 'Transmission Fluid', 'Brake Oil', 'Coolant'],
     href: '/products/oil-fluids/',
-    accent: '#2563eb',
+    accent: 'var(--color-accent-blue)',
   },
   {
     title: 'Maintenance',
     description: 'Professional-grade maintenance products developed in Germany for consistent, reliable service across all vehicle types.',
     items: ['Car Care', 'Consumables'],
     href: '/products/maintenance/',
-    accent: '#059669',
+    accent: 'var(--color-accent-green)',
   },
 ];
 
@@ -178,7 +174,7 @@ const brandLogos = [
       <div class="grid grid--4 values-grid">
         {valueProps.map((prop, i) => (
           <div class="value-card card animate-on-scroll" style={`animation-delay: ${i * 100}ms`}>
-            <div class="value-card__icon" aria-label={prop.iconAlt}>{prop.icon}</div>
+            <div class="value-card__icon" aria-hidden="true" set:html={prop.iconSvg} />
             <h4 class="value-card__title">{prop.title}</h4>
             <p class="value-card__desc">{prop.description}</p>
           </div>
@@ -423,7 +419,7 @@ const brandLogos = [
 
   .hero__stat-label {
     font-size: 0.8125rem;
-    color: rgba(255, 255, 255, 0.4);
+    color: rgba(255, 255, 255, 0.6);
     margin-top: 0.375rem;
   }
 
@@ -600,7 +596,6 @@ const brandLogos = [
   }
 
   .value-card__icon {
-    font-size: 2rem;
     margin-bottom: var(--space-lg);
     display: flex;
     align-items: center;
@@ -608,8 +603,9 @@ const brandLogos = [
     width: 64px;
     height: 64px;
     margin-inline: auto;
-    background: var(--color-offwhite);
+    background: var(--color-navy-10);
     border-radius: var(--border-radius-md);
+    color: var(--color-primary);
   }
 
   .value-card__title {

@@ -31,9 +31,10 @@ const { title, description = 'German Precision. Engine Perfection. Premium autom
     <title>{title} | Kolben Chemicals</title>
   </head>
   <body>
-    <div class="scroll-progress" id="scrollProgress"></div>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
     <Header />
-    <main>
+    <main id="main-content">
       <slot />
     </main>
     <Footer />

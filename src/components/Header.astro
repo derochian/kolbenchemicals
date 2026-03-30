@@ -194,9 +194,15 @@ const navLinks = [
     transition: all var(--transition-fast);
   }
 
-  .header__nav-link:hover {
+  .header__nav-link:hover,
+  .header__nav-link:focus-visible {
     color: var(--color-white);
     background: rgba(255, 255, 255, 0.08);
+  }
+
+  .header__nav-link:focus-visible {
+    outline: 2px solid rgba(255, 255, 255, 0.6);
+    outline-offset: 2px;
   }
 
   .dropdown-arrow {
@@ -240,9 +246,22 @@ const navLinks = [
     transition: all var(--transition-fast);
   }
 
-  .header__dropdown-link:hover {
+  .header__dropdown-link:hover,
+  .header__dropdown-link:focus-visible {
     background: var(--color-offwhite);
     color: var(--color-primary);
+  }
+
+  .header__dropdown-link:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: -2px;
+  }
+
+  /* Show dropdown on focus-within for keyboard nav */
+  .has-dropdown:focus-within .header__dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
   }
 
   /* Actions */
@@ -262,15 +281,28 @@ const navLinks = [
     display: none;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     gap: 5px;
-    width: 28px;
-    height: 28px;
+    width: 44px;
+    height: 44px;
     z-index: 10;
+    cursor: pointer;
+    border-radius: var(--border-radius-sm);
+    transition: background var(--transition-fast);
+  }
+
+  .header__hamburger:hover {
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  .header__hamburger:focus-visible {
+    outline: 2px solid rgba(255, 255, 255, 0.6);
+    outline-offset: 2px;
   }
 
   .header__hamburger span {
     display: block;
-    width: 100%;
+    width: 22px;
     height: 2px;
     background: var(--color-white);
     border-radius: 2px;

@@ -74,28 +74,28 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
         <!-- Contact Form -->
         <div class="contact-form-wrapper animate-on-scroll">
-          <form class="contact-form" id="contactForm">
+          <form class="contact-form" id="contactForm" novalidate>
             <h3>Send a Message</h3>
 
             <div class="form-row">
               <div class="form-group">
-                <label for="firstName">First Name</label>
-                <input type="text" id="firstName" name="firstName" required />
+                <label for="firstName">First Name <span class="required" aria-hidden="true">*</span></label>
+                <input type="text" id="firstName" name="firstName" autocomplete="given-name" required aria-required="true" />
               </div>
               <div class="form-group">
-                <label for="lastName">Last Name</label>
-                <input type="text" id="lastName" name="lastName" required />
+                <label for="lastName">Last Name <span class="required" aria-hidden="true">*</span></label>
+                <input type="text" id="lastName" name="lastName" autocomplete="family-name" required aria-required="true" />
               </div>
             </div>
 
             <div class="form-group">
-              <label for="email">Email</label>
-              <input type="email" id="email" name="email" required />
+              <label for="email">Email <span class="required" aria-hidden="true">*</span></label>
+              <input type="email" id="email" name="email" autocomplete="email" inputmode="email" required aria-required="true" />
             </div>
 
             <div class="form-group">
               <label for="company">Company</label>
-              <input type="text" id="company" name="company" />
+              <input type="text" id="company" name="company" autocomplete="organization" />
             </div>
 
             <div class="form-group">
@@ -110,8 +110,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             </div>
 
             <div class="form-group">
-              <label for="message">Message</label>
-              <textarea id="message" name="message" rows="5" required></textarea>
+              <label for="message">Message <span class="required" aria-hidden="true">*</span></label>
+              <textarea id="message" name="message" rows="5" required aria-required="true"></textarea>
             </div>
 
             <button type="submit" class="btn btn--primary" style="width:100%;">
@@ -265,15 +265,20 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     background: var(--color-offwhite);
     border: 1px solid var(--color-grey-300);
     border-radius: var(--border-radius-sm);
-    transition: border-color var(--transition-fast);
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  }
+
+  .form-group input:focus-visible,
+  .form-group select:focus-visible,
+  .form-group textarea:focus-visible {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(226, 0, 26, 0.1);
     outline: none;
   }
 
-  .form-group input:focus,
-  .form-group select:focus,
-  .form-group textarea:focus {
-    border-color: var(--color-primary);
-    box-shadow: 0 0 0 3px rgba(226, 0, 26, 0.1);
+  .required {
+    color: var(--color-primary);
+    font-weight: var(--fw-bold);
   }
 
   .form-group textarea {
