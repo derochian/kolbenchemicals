@@ -18,13 +18,7 @@ const navLinks = [
 <header class="header" id="header">
   <div class="header__inner container--wide">
     <a href="/" class="header__logo" aria-label="Kolben Chemicals Home">
-      <div class="header__logo-mark">
-        <span class="logo-k">K</span>
-      </div>
-      <div class="header__logo-text">
-        <span class="header__logo-name">KOLBEN</span>
-        <span class="header__logo-sub">CHEMICALS</span>
-      </div>
+      <img src="/images/kolben-logo.png" alt="Kolben Chemicals" class="header__logo-img" />
     </a>
 
     <nav class="header__nav" id="mainNav" aria-label="Main navigation">
@@ -146,7 +140,7 @@ const navLinks = [
   }
 
   .header--scrolled {
-    background: rgba(1, 22, 39, 0.95);
+    background: rgba(22, 65, 148, 0.95);
     backdrop-filter: blur(20px);
     padding: 0.75rem 0;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
@@ -165,55 +159,19 @@ const navLinks = [
   .header__logo {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
     text-decoration: none;
     z-index: 10;
   }
 
-  .header__logo-mark {
-    width: 44px;
+  .header__logo-img {
     height: 44px;
-    background: var(--color-primary);
-    border-radius: var(--border-radius-sm);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width: auto;
     transition: transform var(--transition-base);
+    filter: brightness(0) invert(1);
   }
 
-  .header__logo:hover .header__logo-mark {
+  .header__logo:hover .header__logo-img {
     transform: scale(1.05);
-  }
-
-  .logo-k {
-    font-family: var(--font-heading);
-    font-weight: var(--fw-bold);
-    font-size: 1.5rem;
-    color: var(--color-white);
-    line-height: 1;
-  }
-
-  .header__logo-text {
-    display: flex;
-    flex-direction: column;
-    line-height: 1;
-  }
-
-  .header__logo-name {
-    font-family: var(--font-heading);
-    font-weight: var(--fw-bold);
-    font-size: 1.125rem;
-    color: var(--color-white);
-    letter-spacing: 0.15em;
-  }
-
-  .header__logo-sub {
-    font-family: var(--font-heading);
-    font-weight: var(--fw-medium);
-    font-size: 0.625rem;
-    color: rgba(255, 255, 255, 0.5);
-    letter-spacing: 0.25em;
-    margin-top: 2px;
   }
 
   /* Navigation */

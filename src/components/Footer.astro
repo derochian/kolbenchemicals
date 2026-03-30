@@ -47,13 +47,9 @@ const footerLinks = {
         <!-- Brand Column -->
         <div class="footer__brand">
           <div class="footer__logo">
-            <div class="footer__logo-mark">
-              <span class="logo-k">K</span>
-            </div>
-            <div class="footer__logo-text">
-              <span class="footer__logo-name">KOLBEN</span>
-              <span class="footer__logo-sub">CHEMICALS</span>
-            </div>
+            <a href="/">
+              <img src="/images/kolben-logo.png" alt="Kolben Chemicals" class="footer__logo-img" />
+            </a>
           </div>
           <p class="footer__tagline">
             Born from German engineering tradition, dedicated to precision — not compromise.
@@ -186,50 +182,13 @@ const footerLinks = {
 
   /* Brand */
   .footer__logo {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
     margin-bottom: var(--space-lg);
   }
 
-  .footer__logo-mark {
-    width: 40px;
-    height: 40px;
-    background: var(--color-primary);
-    border-radius: var(--border-radius-sm);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .logo-k {
-    font-family: var(--font-heading);
-    font-weight: var(--fw-bold);
-    font-size: 1.375rem;
-    color: var(--color-white);
-    line-height: 1;
-  }
-
-  .footer__logo-text {
-    display: flex;
-    flex-direction: column;
-    line-height: 1;
-  }
-
-  .footer__logo-name {
-    font-family: var(--font-heading);
-    font-weight: var(--fw-bold);
-    font-size: 1rem;
-    letter-spacing: 0.15em;
-  }
-
-  .footer__logo-sub {
-    font-family: var(--font-heading);
-    font-weight: var(--fw-medium);
-    font-size: 0.5625rem;
-    color: rgba(255, 255, 255, 0.5);
-    letter-spacing: 0.25em;
-    margin-top: 2px;
+  .footer__logo-img {
+    height: 48px;
+    width: auto;
+    filter: brightness(0) invert(1);
   }
 
   .footer__tagline {
