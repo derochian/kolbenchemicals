@@ -1,0 +1,823 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const stats = [
+  { value: '20+', label: 'Years of Experience' },
+  { value: '50M', label: 'Bottles Annual Capacity' },
+  { value: '10K+', label: 'Global Customers' },
+  { value: '140K', label: 'ft² Production Facility' },
+];
+
+const valueProps = [
+  {
+    icon: '🔬',
+    iconAlt: 'flask',
+    title: 'German Engineering',
+    description: 'Every formula developed and tested in Germany with precision that meets the highest automotive standards.',
+  },
+  {
+    icon: '🏭',
+    iconAlt: 'factory',
+    title: 'OEM Certified',
+    description: 'Trusted by BMW, Mercedes-Benz, Volkswagen, and more. Our products meet original equipment specifications.',
+  },
+  {
+    icon: '🌍',
+    iconAlt: 'globe',
+    title: 'Global Distribution',
+    description: 'Worldwide logistics network delivering to over 10,000 customers across every major automotive market.',
+  },
+  {
+    icon: '⚡',
+    iconAlt: 'lightning',
+    title: '48hr Delivery',
+    description: 'Rapid fulfillment infrastructure ensures your shelves stay stocked and your operations never pause.',
+  },
+];
+
+const productCategories = [
+  {
+    title: 'Additives',
+    description: 'High-precision German formulations that clean internal components, reduce friction, and protect engines under real driving conditions.',
+    items: ['Engine', 'Transmission', 'Fuel', 'Radiator', 'Exhaust'],
+    href: '/products/additives/',
+    accent: 'var(--color-primary)',
+  },
+  {
+    title: 'Oil & Fluids',
+    description: 'Precision-formulated oils and fluids engineered in Germany to reduce wear, control heat, and maintain system efficiency.',
+    items: ['Engine Oil', 'Transmission Fluid', 'Brake Oil', 'Coolant'],
+    href: '/products/oil-fluids/',
+    accent: '#2563eb',
+  },
+  {
+    title: 'Maintenance',
+    description: 'Professional-grade maintenance products developed in Germany for consistent, reliable service across all vehicle types.',
+    items: ['Car Care', 'Consumables'],
+    href: '/products/maintenance/',
+    accent: '#059669',
+  },
+];
+
+const brandLogos = [
+  'BMW', 'Mercedes-Benz', 'Audi', 'Volkswagen', 'Lexus',
+  'Toyota', 'Ford', 'Honda', 'Nissan', 'Jaguar',
+  'Land Rover', 'Cadillac', 'Lincoln', 'Jeep',
+];
+---
+
+<BaseLayout title="German Precision. Engine Perfection">
+
+  <!-- ═══════════ HERO ═══════════ -->
+  <section class="hero">
+    <div class="hero__bg">
+      <div class="hero__gradient"></div>
+      <div class="hero__grid-pattern"></div>
+    </div>
+
+    <div class="container hero__container">
+      <div class="hero__content">
+        <div class="hero__badge animate-on-scroll">
+          <span class="hero__badge-dot"></span>
+          Experts in Automotive Since 2006
+        </div>
+
+        <h1 class="hero__title animate-on-scroll">
+          German Precision.<br />
+          <span class="hero__title-accent">Engine Perfection.</span>
+        </h1>
+
+        <p class="hero__subtitle animate-on-scroll">
+          Premium automotive chemicals, additives, and lubricants — engineered in Germany, trusted by OEMs worldwide.
+        </p>
+
+        <div class="hero__actions animate-on-scroll">
+          <a href="/products/" class="btn btn--primary btn--lg">
+            Explore Products
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M3 8H13M13 8L8 3M13 8L8 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <a href="/contact/" class="btn btn--outline btn--lg">Become a Distributor</a>
+        </div>
+
+        <div class="hero__stats animate-on-scroll">
+          {stats.map((stat) => (
+            <div class="hero__stat">
+              <span class="hero__stat-value">{stat.value}</span>
+              <span class="hero__stat-label">{stat.label}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div class="hero__visual animate-on-scroll">
+        <div class="hero__visual-card">
+          <div class="hero__visual-glow"></div>
+          <div class="hero__visual-content">
+            <div class="hero__visual-badge">
+              <span>ISO 9001</span>
+              <span>IATF</span>
+              <span>SGS</span>
+            </div>
+            <div class="hero__visual-tagline">
+              <span class="hero__visual-p">Power</span>
+              <span class="hero__visual-divider">|</span>
+              <span class="hero__visual-p">Performance</span>
+              <span class="hero__visual-divider">|</span>
+              <span class="hero__visual-p hero__visual-p--accent">Kolben</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero__scroll-indicator">
+      <span>Scroll</span>
+      <div class="hero__scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════ TRUST BAR ═══════════ -->
+  <section class="trust-bar">
+    <div class="container">
+      <p class="trust-bar__label">Trusted by Leading Automotive Brands</p>
+      <div class="trust-bar__logos">
+        <div class="trust-bar__track">
+          {[...brandLogos, ...brandLogos].map((brand) => (
+            <span class="trust-bar__logo">{brand}</span>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ VALUE PROPOSITIONS ═══════════ -->
+  <section class="section section--grey" id="why-kolben">
+    <div class="container">
+      <div class="text-center animate-on-scroll">
+        <span class="section-label">Why Kolben</span>
+        <h2 class="section-title">Built for Performance.<br />Engineered for Trust.</h2>
+        <p class="section-subtitle">
+          Every product carries decades of German engineering expertise, OEM certification, and a commitment to precision.
+        </p>
+      </div>
+
+      <div class="grid grid--4 values-grid">
+        {valueProps.map((prop, i) => (
+          <div class="value-card card animate-on-scroll" style={`animation-delay: ${i * 100}ms`}>
+            <div class="value-card__icon" aria-label={prop.iconAlt}>{prop.icon}</div>
+            <h4 class="value-card__title">{prop.title}</h4>
+            <p class="value-card__desc">{prop.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ PRODUCTS ═══════════ -->
+  <section class="section" id="products">
+    <div class="container">
+      <div class="animate-on-scroll">
+        <span class="section-label">Our Products</span>
+        <h2 class="section-title">Precision Chemistry for<br />Every System</h2>
+        <p class="section-subtitle">
+          From engine additives to maintenance essentials — solutions engineered for professional automotive care.
+        </p>
+      </div>
+
+      <div class="products-grid">
+        {productCategories.map((cat, i) => (
+          <a href={cat.href} class="product-category animate-on-scroll" style={`animation-delay: ${i * 150}ms`}>
+            <div class="product-category__accent" style={`background: ${cat.accent}`}></div>
+            <div class="product-category__content">
+              <h3 class="product-category__title">{cat.title}</h3>
+              <p class="product-category__desc">{cat.description}</p>
+              <ul class="product-category__items">
+                {cat.items.map((item) => (
+                  <li>
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                      <path d="M2 7H12M12 7L7 2M12 7L7 12" stroke={cat.accent} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <span class="product-category__link" style={`color: ${cat.accent}`}>
+                View All
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path d="M3 8H13M13 8L8 3M13 8L8 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ ABOUT BANNER ═══════════ -->
+  <section class="section section--dark about-banner">
+    <div class="about-banner__bg"></div>
+    <div class="container">
+      <div class="about-banner__grid">
+        <div class="about-banner__content animate-on-scroll">
+          <span class="section-label">Our Story</span>
+          <h2>From Hannover to<br />the World</h2>
+          <p>
+            Founded in 2006, Kolben Chemicals has grown from a German additives manufacturer to a global partner for automotive OEMs. With a 140,000 ft² modern production facility and annual capacity of 50 million bottles, we serve over 10,000 customers worldwide.
+          </p>
+          <p>
+            Our R&D team of registered quality engineers, chemical engineers, and mechanical engineers ensures every product meets the exacting standards of brands like BMW, Mercedes-Benz, and Volkswagen.
+          </p>
+          <a href="/about/" class="btn btn--outline" style="margin-top: 1rem;">
+            Learn Our Story
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M3 8H13M13 8L8 3M13 8L8 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+
+        <div class="about-banner__timeline animate-on-scroll">
+          <div class="timeline">
+            <div class="timeline__item">
+              <span class="timeline__year">2006</span>
+              <p>Company founded in Hannover, Germany</p>
+            </div>
+            <div class="timeline__item">
+              <span class="timeline__year">2009</span>
+              <p>First patented product launched</p>
+            </div>
+            <div class="timeline__item">
+              <span class="timeline__year">2011</span>
+              <p>10M+ annual production units</p>
+            </div>
+            <div class="timeline__item">
+              <span class="timeline__year">2020</span>
+              <p>140,000 ft² modern facility opened</p>
+            </div>
+            <div class="timeline__item">
+              <span class="timeline__year">2022</span>
+              <p>Official OEM partner for BMW, Mercedes, Audi & more</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ CTA ═══════════ -->
+  <section class="section cta-section">
+    <div class="container text-center">
+      <div class="animate-on-scroll">
+        <span class="section-label" style="justify-content: center;">For Distributors</span>
+        <h2 class="section-title">Find the Perfect Solution<br />for Your Market</h2>
+        <p class="section-subtitle" style="margin-inline: auto; margin-bottom: 2rem;">
+          Partner with Kolben Chemicals and offer your customers German-engineered quality backed by OEM certification and global logistics.
+        </p>
+        <div class="cta-section__actions">
+          <a href="/contact/" class="btn btn--primary btn--lg">Get in Touch</a>
+          <a href="/products/" class="btn btn--outline-dark btn--lg">Browse Catalog</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  /* ═══════════ HERO ═══════════ */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 8rem 0 4rem;
+    overflow: hidden;
+  }
+
+  .hero__bg {
+    position: absolute;
+    inset: 0;
+    background: var(--color-navy);
+  }
+
+  .hero__gradient {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 50%, rgba(217, 73, 72, 0.15) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 20%, rgba(37, 99, 235, 0.08) 0%, transparent 50%);
+  }
+
+  .hero__grid-pattern {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  .hero__container {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: var(--space-4xl);
+    align-items: center;
+  }
+
+  .hero__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.625rem;
+    padding: 0.5rem 1.25rem;
+    background: rgba(217, 73, 72, 0.1);
+    border: 1px solid rgba(217, 73, 72, 0.2);
+    border-radius: 100px;
+    font-family: var(--font-heading);
+    font-size: 0.8125rem;
+    font-weight: var(--fw-medium);
+    color: var(--color-primary-light);
+    margin-bottom: var(--space-xl);
+  }
+
+  .hero__badge-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--color-primary);
+    border-radius: 50%;
+    animation: pulse 2s ease infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.5); }
+  }
+
+  .hero__title {
+    color: var(--color-white);
+    font-size: clamp(2.75rem, 5.5vw, 4.5rem);
+    font-weight: var(--fw-bold);
+    line-height: 1.1;
+    margin-bottom: var(--space-xl);
+  }
+
+  .hero__title-accent {
+    background: linear-gradient(135deg, var(--color-primary-light), var(--color-primary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero__subtitle {
+    font-size: 1.125rem;
+    color: rgba(255, 255, 255, 0.6);
+    max-width: 520px;
+    margin-bottom: var(--space-2xl);
+    line-height: 1.7;
+  }
+
+  .hero__actions {
+    display: flex;
+    gap: var(--space-md);
+    margin-bottom: var(--space-3xl);
+  }
+
+  .btn--lg {
+    padding: 1rem 2.25rem;
+    font-size: 1rem;
+  }
+
+  .hero__stats {
+    display: flex;
+    gap: var(--space-2xl);
+    padding-top: var(--space-2xl);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .hero__stat {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hero__stat-value {
+    font-family: var(--font-heading);
+    font-size: 1.75rem;
+    font-weight: var(--fw-bold);
+    color: var(--color-white);
+    line-height: 1;
+  }
+
+  .hero__stat-label {
+    font-size: 0.8125rem;
+    color: rgba(255, 255, 255, 0.4);
+    margin-top: 0.375rem;
+  }
+
+  /* Hero Visual */
+  .hero__visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .hero__visual-card {
+    position: relative;
+    width: 100%;
+    max-width: 420px;
+    aspect-ratio: 3 / 4;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--border-radius-xl);
+    backdrop-filter: blur(20px);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: var(--space-2xl);
+    overflow: hidden;
+  }
+
+  .hero__visual-glow {
+    position: absolute;
+    top: -30%;
+    right: -30%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(217, 73, 72, 0.2), transparent 70%);
+    border-radius: 50%;
+  }
+
+  .hero__visual-badge {
+    display: flex;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-lg);
+    position: relative;
+  }
+
+  .hero__visual-badge span {
+    padding: 0.375rem 0.75rem;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--border-radius-sm);
+    font-family: var(--font-heading);
+    font-size: 0.6875rem;
+    font-weight: var(--fw-semibold);
+    color: rgba(255, 255, 255, 0.6);
+    letter-spacing: 0.05em;
+  }
+
+  .hero__visual-tagline {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    position: relative;
+  }
+
+  .hero__visual-p {
+    font-family: var(--font-heading);
+    font-size: 1.125rem;
+    font-weight: var(--fw-semibold);
+    color: rgba(255, 255, 255, 0.7);
+    letter-spacing: 0.05em;
+  }
+
+  .hero__visual-p--accent {
+    color: var(--color-primary-light);
+  }
+
+  .hero__visual-divider {
+    color: rgba(255, 255, 255, 0.15);
+    font-weight: 300;
+  }
+
+  /* Scroll indicator */
+  .hero__scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .hero__scroll-indicator span {
+    font-family: var(--font-heading);
+    font-size: 0.6875rem;
+    font-weight: var(--fw-medium);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.3);
+  }
+
+  .hero__scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), transparent);
+    animation: scrollPulse 2s ease infinite;
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  /* ═══════════ TRUST BAR ═══════════ */
+  .trust-bar {
+    padding: var(--space-3xl) 0;
+    background: var(--color-white);
+    border-bottom: 1px solid var(--color-grey-200);
+    overflow: hidden;
+  }
+
+  .trust-bar__label {
+    text-align: center;
+    font-family: var(--font-heading);
+    font-size: 0.75rem;
+    font-weight: var(--fw-semibold);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-grey-600);
+    margin-bottom: var(--space-xl);
+  }
+
+  .trust-bar__logos {
+    overflow: hidden;
+    mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+  }
+
+  .trust-bar__track {
+    display: flex;
+    gap: var(--space-3xl);
+    animation: marquee 30s linear infinite;
+    width: max-content;
+  }
+
+  .trust-bar__logo {
+    font-family: var(--font-heading);
+    font-size: 0.875rem;
+    font-weight: var(--fw-semibold);
+    color: var(--color-grey-600);
+    white-space: nowrap;
+    opacity: 0.6;
+    letter-spacing: 0.05em;
+  }
+
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* ═══════════ VALUE CARDS ═══════════ */
+  .values-grid {
+    margin-top: var(--space-3xl);
+  }
+
+  .value-card {
+    text-align: center;
+    padding: var(--space-2xl) var(--space-xl);
+  }
+
+  .value-card__icon {
+    font-size: 2rem;
+    margin-bottom: var(--space-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+    margin-inline: auto;
+    background: var(--color-offwhite);
+    border-radius: var(--border-radius-md);
+  }
+
+  .value-card__title {
+    font-size: 1.125rem;
+    margin-bottom: var(--space-sm);
+  }
+
+  .value-card__desc {
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: var(--color-grey-600);
+    margin-inline: auto;
+  }
+
+  /* ═══════════ PRODUCTS ═══════════ */
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-xl);
+    margin-top: var(--space-3xl);
+  }
+
+  .product-category {
+    position: relative;
+    background: var(--color-white);
+    border: 1px solid var(--color-grey-200);
+    border-radius: var(--border-radius-md);
+    overflow: hidden;
+    transition: all var(--transition-base);
+    text-decoration: none;
+    display: block;
+  }
+
+  .product-category:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-xl);
+    border-color: transparent;
+  }
+
+  .product-category__accent {
+    height: 4px;
+    width: 100%;
+  }
+
+  .product-category__content {
+    padding: var(--space-2xl);
+  }
+
+  .product-category__title {
+    font-size: 1.5rem;
+    margin-bottom: var(--space-md);
+  }
+
+  .product-category__desc {
+    font-size: 0.9375rem;
+    color: var(--color-grey-600);
+    line-height: 1.6;
+    margin-bottom: var(--space-xl);
+  }
+
+  .product-category__items {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-xl);
+  }
+
+  .product-category__items li {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    font-size: 0.9375rem;
+    color: var(--color-grey-700);
+  }
+
+  .product-category__link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    font-family: var(--font-heading);
+    font-size: 0.9375rem;
+    font-weight: var(--fw-semibold);
+    transition: gap var(--transition-base);
+  }
+
+  .product-category:hover .product-category__link {
+    gap: var(--space-md);
+  }
+
+  /* ═══════════ ABOUT BANNER ═══════════ */
+  .about-banner {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .about-banner__bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 90% 80%, rgba(217, 73, 72, 0.1) 0%, transparent 50%);
+  }
+
+  .about-banner__grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: var(--space-4xl);
+    align-items: center;
+    position: relative;
+  }
+
+  .about-banner__content p {
+    color: rgba(255, 255, 255, 0.65);
+    margin-bottom: var(--space-md);
+  }
+
+  /* Timeline */
+  .timeline {
+    position: relative;
+    padding-left: var(--space-2xl);
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--color-primary), rgba(217, 73, 72, 0.2));
+  }
+
+  .timeline__item {
+    position: relative;
+    padding-bottom: var(--space-xl);
+  }
+
+  .timeline__item::before {
+    content: '';
+    position: absolute;
+    left: calc(-1 * var(--space-2xl) - 4px);
+    top: 6px;
+    width: 10px;
+    height: 10px;
+    background: var(--color-primary);
+    border-radius: 50%;
+    border: 2px solid var(--color-navy);
+  }
+
+  .timeline__year {
+    font-family: var(--font-heading);
+    font-size: 0.8125rem;
+    font-weight: var(--fw-bold);
+    color: var(--color-primary-light);
+    letter-spacing: 0.05em;
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+
+  .timeline__item p {
+    font-size: 0.9375rem;
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  /* ═══════════ CTA SECTION ═══════════ */
+  .cta-section {
+    background: var(--color-offwhite);
+  }
+
+  .cta-section__actions {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-md);
+  }
+
+  /* ═══════════ RESPONSIVE ═══════════ */
+  @media (max-width: 1024px) {
+    .hero__container {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+
+    .hero__subtitle {
+      margin-inline: auto;
+    }
+
+    .hero__actions {
+      justify-content: center;
+    }
+
+    .hero__stats {
+      justify-content: center;
+    }
+
+    .hero__visual {
+      display: none;
+    }
+
+    .products-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .about-banner__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      min-height: auto;
+      padding: 7rem 0 3rem;
+    }
+
+    .hero__stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-lg);
+    }
+
+    .hero__actions {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .cta-section__actions {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+</style>

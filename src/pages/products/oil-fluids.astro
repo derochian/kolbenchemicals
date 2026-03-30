@@ -1,0 +1,171 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const categories = [
+  {
+    name: 'Engine Oil',
+    products: ['Full Synthetic 5W-30', 'Full Synthetic 5W-40', 'Semi-Synthetic 10W-40', 'High Mileage 5W-30'],
+  },
+  {
+    name: 'Transmission Fluid',
+    products: ['ATF Multi-Vehicle', 'CVT Fluid', 'Dual Clutch Fluid'],
+  },
+  {
+    name: 'Brake Oil',
+    products: ['DOT 4 Brake Fluid', 'DOT 5.1 Brake Fluid'],
+  },
+  {
+    name: 'Coolant',
+    products: ['Long-Life Coolant', 'Universal Antifreeze'],
+  },
+];
+---
+
+<BaseLayout title="Oil & Fluids" description="Kolben Chemicals oils and fluids — precision-formulated engine oils, transmission fluids, brake oils, and coolants.">
+
+  <section class="page-hero">
+    <div class="page-hero__bg"></div>
+    <div class="container">
+      <div class="page-hero__content animate-on-scroll">
+        <span class="section-label">Product Category</span>
+        <h1>Oil & Fluids</h1>
+        <p class="page-hero__subtitle">
+          Precision-formulated oils and fluids engineered in Germany to reduce wear, control heat, and maintain system efficiency.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="oil-categories">
+        {categories.map((cat, i) => (
+          <div class="oil-category animate-on-scroll" id={cat.name.toLowerCase().replace(/\s+/g, '-')}>
+            <h2>{cat.name}</h2>
+            <div class="oil-grid">
+              {cat.products.map((product) => (
+                <div class="oil-card card">
+                  <div class="oil-card__image">
+                    <span>K</span>
+                  </div>
+                  <h4>{product}</h4>
+                  <p>German-engineered {cat.name.toLowerCase()} formulated for maximum protection and performance.</p>
+                  <div class="oil-card__badges">
+                    <span class="spec-tag">OEM Spec</span>
+                    <span class="spec-tag">German Formula</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .page-hero {
+    position: relative;
+    padding: 10rem 0 5rem;
+    overflow: hidden;
+  }
+
+  .page-hero__bg {
+    position: absolute;
+    inset: 0;
+    background: var(--color-navy);
+    z-index: -1;
+  }
+
+  .page-hero__bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 30% 50%, rgba(37, 99, 235, 0.12) 0%, transparent 60%);
+  }
+
+  .page-hero h1 {
+    color: var(--color-white);
+    font-size: clamp(2.25rem, 5vw, 3.5rem);
+    margin-bottom: var(--space-lg);
+  }
+
+  .page-hero__subtitle {
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.6);
+    max-width: 550px;
+  }
+
+  .oil-categories {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4xl);
+  }
+
+  .oil-category h2 {
+    font-size: 1.75rem;
+    margin-bottom: var(--space-xl);
+    padding-bottom: var(--space-md);
+    border-bottom: 2px solid var(--color-grey-200);
+  }
+
+  .oil-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: var(--space-xl);
+  }
+
+  .oil-card {
+    text-align: center;
+  }
+
+  .oil-card__image {
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(135deg, #0a2540 0%, #011627 100%);
+    border-radius: var(--border-radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--space-lg);
+  }
+
+  .oil-card__image span {
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    font-weight: var(--fw-bold);
+    color: #2563eb;
+    opacity: 0.4;
+  }
+
+  .oil-card h4 {
+    font-size: 1.125rem;
+    margin-bottom: var(--space-sm);
+  }
+
+  .oil-card p {
+    font-size: 0.875rem;
+    color: var(--color-grey-600);
+    margin-inline: auto;
+    margin-bottom: var(--space-md);
+  }
+
+  .oil-card__badges {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+  }
+
+  .spec-tag {
+    padding: 0.25rem 0.75rem;
+    background: var(--color-offwhite);
+    border-radius: 100px;
+    font-family: var(--font-heading);
+    font-size: 0.75rem;
+    font-weight: var(--fw-medium);
+    color: var(--color-grey-700);
+  }
+</style>

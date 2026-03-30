@@ -1,0 +1,295 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Contact" description="Get in touch with Kolben Chemicals. Become a distributor or inquire about our German-engineered automotive products.">
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="page-hero__bg"></div>
+    <div class="container">
+      <div class="page-hero__content animate-on-scroll">
+        <span class="section-label">Contact Us</span>
+        <h1>Let's Build Something<br />Together</h1>
+        <p class="page-hero__subtitle">
+          Whether you're a distributor, OEM partner, or automotive professional — we'd love to hear from you.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Content -->
+  <section class="section">
+    <div class="container">
+      <div class="contact-grid">
+        <!-- Contact Info -->
+        <div class="contact-info animate-on-scroll">
+          <h3>Get in Touch</h3>
+          <p>
+            Interested in becoming a Kolben distributor or exploring OEM partnerships? Reach out and our team will respond within 24 hours.
+          </p>
+
+          <div class="contact-cards">
+            <div class="contact-card">
+              <div class="contact-card__icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                  <circle cx="12" cy="10" r="3"/>
+                </svg>
+              </div>
+              <div>
+                <h5>Headquarters</h5>
+                <p>Am Brabrinke 14<br />D-30519 Hannover, Germany</p>
+              </div>
+            </div>
+
+            <div class="contact-card">
+              <div class="contact-card__icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect width="20" height="16" x="2" y="4" rx="2"/>
+                  <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                </svg>
+              </div>
+              <div>
+                <h5>Email</h5>
+                <a href="mailto:Info@kolbenchemicals.com">Info@kolbenchemicals.com</a>
+              </div>
+            </div>
+
+            <div class="contact-card">
+              <div class="contact-card__icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"/>
+                  <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/>
+                  <path d="M2 12h20"/>
+                </svg>
+              </div>
+              <div>
+                <h5>Website</h5>
+                <a href="https://kolbenchemicals.com">kolbenchemicals.com</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="contact-form-wrapper animate-on-scroll">
+          <form class="contact-form" id="contactForm">
+            <h3>Send a Message</h3>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input type="text" id="firstName" name="firstName" required />
+              </div>
+              <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input type="text" id="lastName" name="lastName" required />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+
+            <div class="form-group">
+              <label for="company">Company</label>
+              <input type="text" id="company" name="company" />
+            </div>
+
+            <div class="form-group">
+              <label for="interest">I'm Interested In</label>
+              <select id="interest" name="interest">
+                <option value="">Select an option</option>
+                <option value="distributor">Becoming a Distributor</option>
+                <option value="oem">OEM Partnership</option>
+                <option value="products">Product Inquiry</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="5" required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn--primary" style="width:100%;">
+              Send Message
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M3 8H13M13 8L8 3M13 8L8 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .page-hero {
+    position: relative;
+    padding: 10rem 0 5rem;
+    overflow: hidden;
+  }
+
+  .page-hero__bg {
+    position: absolute;
+    inset: 0;
+    background: var(--color-navy);
+    z-index: -1;
+  }
+
+  .page-hero__bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 30% 50%, rgba(217, 73, 72, 0.12) 0%, transparent 60%);
+  }
+
+  .page-hero h1 {
+    color: var(--color-white);
+    font-size: clamp(2.25rem, 5vw, 3.5rem);
+    margin-bottom: var(--space-lg);
+  }
+
+  .page-hero__subtitle {
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.6);
+    max-width: 550px;
+  }
+
+  /* Contact Grid */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4xl);
+    align-items: start;
+  }
+
+  .contact-info h3 {
+    font-size: 1.75rem;
+    margin-bottom: var(--space-md);
+  }
+
+  .contact-info > p {
+    color: var(--color-grey-600);
+    line-height: 1.7;
+    margin-bottom: var(--space-2xl);
+  }
+
+  .contact-cards {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+
+  .contact-card {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-lg);
+    padding: var(--space-xl);
+    background: var(--color-offwhite);
+    border-radius: var(--border-radius-md);
+  }
+
+  .contact-card__icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-white);
+    border-radius: var(--border-radius-md);
+    color: var(--color-primary);
+    flex-shrink: 0;
+  }
+
+  .contact-card h5 {
+    font-size: 0.9375rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .contact-card p,
+  .contact-card a {
+    font-size: 0.9375rem;
+    color: var(--color-grey-600);
+  }
+
+  .contact-card a:hover {
+    color: var(--color-primary);
+  }
+
+  /* Form */
+  .contact-form-wrapper {
+    background: var(--color-white);
+    border: 1px solid var(--color-grey-200);
+    border-radius: var(--border-radius-lg);
+    padding: var(--space-2xl);
+  }
+
+  .contact-form h3 {
+    font-size: 1.5rem;
+    margin-bottom: var(--space-xl);
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-md);
+  }
+
+  .form-group {
+    margin-bottom: var(--space-lg);
+  }
+
+  .form-group label {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 0.8125rem;
+    font-weight: var(--fw-semibold);
+    color: var(--color-navy);
+    margin-bottom: 0.375rem;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    color: var(--color-navy);
+    background: var(--color-offwhite);
+    border: 1px solid var(--color-grey-300);
+    border-radius: var(--border-radius-sm);
+    transition: border-color var(--transition-fast);
+    outline: none;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(217, 73, 72, 0.1);
+  }
+
+  .form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+
+  @media (max-width: 900px) {
+    .contact-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .form-row {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

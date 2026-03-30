@@ -1,0 +1,151 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const categories = [
+  {
+    name: 'Car Care',
+    products: [
+      { name: 'Interior Cleaner', desc: 'Professional-grade interior surface cleaner for dashboard, seats, and trim.' },
+      { name: 'Glass Cleaner', desc: 'Streak-free automotive glass cleaner for windshields, mirrors, and windows.' },
+      { name: 'Tire Shine', desc: 'Long-lasting tire dressing that restores deep black appearance.' },
+      { name: 'Paint Sealant', desc: 'Advanced paint protection sealant with UV-resistant formula.' },
+      { name: 'Leather Conditioner', desc: 'Nourishing leather treatment that preserves and protects leather surfaces.' },
+    ],
+  },
+  {
+    name: 'Consumables',
+    products: [
+      { name: 'Windshield Washer Fluid', desc: 'All-season washer fluid with bug and grime removal formula.' },
+      { name: 'Penetrating Oil', desc: 'Fast-acting penetrant that loosens seized bolts, nuts, and fittings.' },
+      { name: 'Contact Cleaner', desc: 'Precision electrical contact cleaner for sensors, connectors, and switches.' },
+      { name: 'Silicone Lubricant', desc: 'Multi-purpose silicone spray for rubber, plastic, and metal surfaces.' },
+    ],
+  },
+];
+---
+
+<BaseLayout title="Maintenance Products" description="Kolben Chemicals maintenance products — professional-grade car care and consumables for consistent, reliable service.">
+
+  <section class="page-hero">
+    <div class="page-hero__bg"></div>
+    <div class="container">
+      <div class="page-hero__content animate-on-scroll">
+        <span class="section-label">Product Category</span>
+        <h1>Maintenance Products</h1>
+        <p class="page-hero__subtitle">
+          Professional-grade maintenance products developed in Germany for consistent, reliable service.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="maint-categories">
+        {categories.map((cat) => (
+          <div class="maint-category animate-on-scroll">
+            <h2>{cat.name}</h2>
+            <div class="maint-grid">
+              {cat.products.map((product) => (
+                <div class="maint-card card">
+                  <div class="maint-card__icon">
+                    <div class="maint-card__dot"></div>
+                  </div>
+                  <h4>{product.name}</h4>
+                  <p>{product.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .page-hero {
+    position: relative;
+    padding: 10rem 0 5rem;
+    overflow: hidden;
+  }
+
+  .page-hero__bg {
+    position: absolute;
+    inset: 0;
+    background: var(--color-navy);
+    z-index: -1;
+  }
+
+  .page-hero__bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 30% 50%, rgba(5, 150, 105, 0.12) 0%, transparent 60%);
+  }
+
+  .page-hero h1 {
+    color: var(--color-white);
+    font-size: clamp(2.25rem, 5vw, 3.5rem);
+    margin-bottom: var(--space-lg);
+  }
+
+  .page-hero__subtitle {
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.6);
+    max-width: 550px;
+  }
+
+  .maint-categories {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4xl);
+  }
+
+  .maint-category h2 {
+    font-size: 1.75rem;
+    margin-bottom: var(--space-xl);
+    padding-bottom: var(--space-md);
+    border-bottom: 2px solid var(--color-grey-200);
+  }
+
+  .maint-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--space-xl);
+  }
+
+  .maint-card {
+    position: relative;
+  }
+
+  .maint-card__icon {
+    width: 40px;
+    height: 40px;
+    background: rgba(5, 150, 105, 0.08);
+    border-radius: var(--border-radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--space-md);
+  }
+
+  .maint-card__dot {
+    width: 10px;
+    height: 10px;
+    background: #059669;
+    border-radius: 50%;
+  }
+
+  .maint-card h4 {
+    font-size: 1.125rem;
+    margin-bottom: var(--space-sm);
+  }
+
+  .maint-card p {
+    font-size: 0.9375rem;
+    color: var(--color-grey-600);
+    line-height: 1.6;
+  }
+</style>

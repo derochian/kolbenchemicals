@@ -1,0 +1,357 @@
+---
+const currentYear = new Date().getFullYear();
+
+const footerLinks = {
+  additives: [
+    { label: 'Engine', href: '/products/additives/#engine' },
+    { label: 'Transmission', href: '/products/additives/#transmission' },
+    { label: 'Fuel', href: '/products/additives/#fuel' },
+    { label: 'Radiator', href: '/products/additives/#radiator' },
+    { label: 'Exhaust', href: '/products/additives/#exhaust' },
+  ],
+  oilFluids: [
+    { label: 'Engine Oil', href: '/products/oil-fluids/#engine-oil' },
+    { label: 'Transmission Fluid', href: '/products/oil-fluids/#transmission-fluid' },
+    { label: 'Brake Oil', href: '/products/oil-fluids/#brake-oil' },
+    { label: 'Coolant', href: '/products/oil-fluids/#coolant' },
+  ],
+  company: [
+    { label: 'About Us', href: '/about/' },
+    { label: 'Products', href: '/products/' },
+    { label: 'Contact', href: '/contact/' },
+  ],
+};
+---
+
+<footer class="footer">
+  <!-- CTA Banner -->
+  <div class="footer__cta">
+    <div class="container">
+      <div class="footer__cta-inner">
+        <div class="footer__cta-content">
+          <h3>Ready to Partner with Kolben?</h3>
+          <p>Join our global network of distributors and bring German-engineered quality to your market.</p>
+        </div>
+        <div class="footer__cta-actions">
+          <a href="/contact/" class="btn btn--primary">Become a Distributor</a>
+          <a href="/products/" class="btn btn--outline">View Products</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Footer -->
+  <div class="footer__main">
+    <div class="container">
+      <div class="footer__grid">
+        <!-- Brand Column -->
+        <div class="footer__brand">
+          <div class="footer__logo">
+            <div class="footer__logo-mark">
+              <span class="logo-k">K</span>
+            </div>
+            <div class="footer__logo-text">
+              <span class="footer__logo-name">KOLBEN</span>
+              <span class="footer__logo-sub">CHEMICALS</span>
+            </div>
+          </div>
+          <p class="footer__tagline">
+            Born from German engineering tradition, dedicated to precision — not compromise.
+          </p>
+          <div class="footer__certifications">
+            <span class="cert-badge">ISO 9001</span>
+            <span class="cert-badge">IATF</span>
+            <span class="cert-badge">SGS</span>
+          </div>
+        </div>
+
+        <!-- Additives -->
+        <div class="footer__col">
+          <h5 class="footer__heading">Additives</h5>
+          <ul>
+            {footerLinks.additives.map((link) => (
+              <li><a href={link.href}>{link.label}</a></li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Oil & Fluids -->
+        <div class="footer__col">
+          <h5 class="footer__heading">Oil & Fluids</h5>
+          <ul>
+            {footerLinks.oilFluids.map((link) => (
+              <li><a href={link.href}>{link.label}</a></li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Company -->
+        <div class="footer__col">
+          <h5 class="footer__heading">Company</h5>
+          <ul>
+            {footerLinks.company.map((link) => (
+              <li><a href={link.href}>{link.label}</a></li>
+            ))}
+          </ul>
+          <div class="footer__contact-info">
+            <p>Am Brabrinke 14<br />D-30519 Hannover, Germany</p>
+            <a href="mailto:Info@kolbenchemicals.com">Info@kolbenchemicals.com</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Bar -->
+  <div class="footer__bottom">
+    <div class="container">
+      <div class="footer__bottom-inner">
+        <p>&copy; {currentYear} Kolben Chemicals. All rights reserved.</p>
+        <p class="footer__tagline-sm">German Precision. Engine Perfection.</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: var(--color-navy);
+    color: var(--color-white);
+  }
+
+  /* CTA Banner */
+  .footer__cta {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    padding: var(--space-4xl) 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .footer__cta::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 500px;
+    height: 500px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+  }
+
+  .footer__cta-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-2xl);
+  }
+
+  .footer__cta-content h3 {
+    color: var(--color-white);
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    margin-bottom: var(--space-sm);
+  }
+
+  .footer__cta-content p {
+    color: rgba(255, 255, 255, 0.85);
+    max-width: 500px;
+  }
+
+  .footer__cta-actions {
+    display: flex;
+    gap: var(--space-md);
+    flex-shrink: 0;
+  }
+
+  .footer__cta .btn--primary {
+    background: var(--color-white);
+    color: var(--color-primary);
+  }
+
+  .footer__cta .btn--primary:hover {
+    background: var(--color-offwhite);
+    box-shadow: var(--shadow-lg);
+  }
+
+  /* Main Footer */
+  .footer__main {
+    padding: var(--space-4xl) 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .footer__grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: var(--space-3xl);
+  }
+
+  /* Brand */
+  .footer__logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: var(--space-lg);
+  }
+
+  .footer__logo-mark {
+    width: 40px;
+    height: 40px;
+    background: var(--color-primary);
+    border-radius: var(--border-radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .logo-k {
+    font-family: var(--font-heading);
+    font-weight: var(--fw-bold);
+    font-size: 1.375rem;
+    color: var(--color-white);
+    line-height: 1;
+  }
+
+  .footer__logo-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+  }
+
+  .footer__logo-name {
+    font-family: var(--font-heading);
+    font-weight: var(--fw-bold);
+    font-size: 1rem;
+    letter-spacing: 0.15em;
+  }
+
+  .footer__logo-sub {
+    font-family: var(--font-heading);
+    font-weight: var(--fw-medium);
+    font-size: 0.5625rem;
+    color: rgba(255, 255, 255, 0.5);
+    letter-spacing: 0.25em;
+    margin-top: 2px;
+  }
+
+  .footer__tagline {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    margin-bottom: var(--space-lg);
+  }
+
+  .footer__certifications {
+    display: flex;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+  }
+
+  .cert-badge {
+    display: inline-block;
+    padding: 0.375rem 0.75rem;
+    font-family: var(--font-heading);
+    font-size: 0.6875rem;
+    font-weight: var(--fw-semibold);
+    letter-spacing: 0.05em;
+    color: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: var(--border-radius-sm);
+  }
+
+  /* Columns */
+  .footer__heading {
+    font-family: var(--font-heading);
+    font-size: 0.8125rem;
+    font-weight: var(--fw-semibold);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.4);
+    margin-bottom: var(--space-lg);
+  }
+
+  .footer__col ul {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .footer__col a {
+    font-size: 0.9375rem;
+    color: rgba(255, 255, 255, 0.7);
+    transition: color var(--transition-fast);
+  }
+
+  .footer__col a:hover {
+    color: var(--color-white);
+  }
+
+  .footer__contact-info {
+    margin-top: var(--space-xl);
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.5);
+    line-height: 1.6;
+  }
+
+  .footer__contact-info a {
+    color: var(--color-primary-light);
+    font-size: 0.875rem;
+  }
+
+  /* Bottom */
+  .footer__bottom {
+    padding: var(--space-lg) 0;
+  }
+
+  .footer__bottom-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .footer__bottom p {
+    font-size: 0.8125rem;
+    color: rgba(255, 255, 255, 0.35);
+  }
+
+  .footer__tagline-sm {
+    font-family: var(--font-heading);
+    font-weight: var(--fw-medium);
+    letter-spacing: 0.05em;
+  }
+
+  @media (max-width: 900px) {
+    .footer__cta-inner {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .footer__cta-content p {
+      margin-inline: auto;
+    }
+
+    .footer__grid {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-2xl);
+    }
+
+    .footer__brand {
+      grid-column: 1 / -1;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .footer__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .footer__cta-actions {
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .footer__bottom-inner {
+      flex-direction: column;
+      gap: var(--space-sm);
+      text-align: center;
+    }
+  }
+</style>

@@ -1,0 +1,399 @@
+---
+const navLinks = [
+  { label: 'Home', href: '/' },
+  { label: 'About', href: '/about/' },
+  {
+    label: 'Products',
+    href: '/products/',
+    children: [
+      { label: 'Additives', href: '/products/additives/' },
+      { label: 'Oil & Fluids', href: '/products/oil-fluids/' },
+      { label: 'Maintenance', href: '/products/maintenance/' },
+    ],
+  },
+  { label: 'Contact', href: '/contact/' },
+];
+---
+
+<header class="header" id="header">
+  <div class="header__inner container--wide">
+    <a href="/" class="header__logo" aria-label="Kolben Chemicals Home">
+      <div class="header__logo-mark">
+        <span class="logo-k">K</span>
+      </div>
+      <div class="header__logo-text">
+        <span class="header__logo-name">KOLBEN</span>
+        <span class="header__logo-sub">CHEMICALS</span>
+      </div>
+    </a>
+
+    <nav class="header__nav" id="mainNav" aria-label="Main navigation">
+      <ul class="header__nav-list">
+        {navLinks.map((link) => (
+          <li class={`header__nav-item ${link.children ? 'has-dropdown' : ''}`}>
+            <a href={link.href} class="header__nav-link">
+              {link.label}
+              {link.children && (
+                <svg class="dropdown-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none">
+                  <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              )}
+            </a>
+            {link.children && (
+              <ul class="header__dropdown">
+                {link.children.map((child) => (
+                  <li>
+                    <a href={child.href} class="header__dropdown-link">{child.label}</a>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <div class="header__actions">
+      <a href="/contact/" class="btn btn--primary btn--sm">
+        Become a Distributor
+      </a>
+      <button
+        class="header__hamburger"
+        id="hamburger"
+        aria-label="Toggle menu"
+        aria-expanded="false"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile menu overlay -->
+<div class="mobile-overlay" id="mobileOverlay"></div>
+<div class="mobile-menu" id="mobileMenu">
+  <nav>
+    <ul class="mobile-menu__list">
+      {navLinks.map((link) => (
+        <li class="mobile-menu__item">
+          <a href={link.href} class="mobile-menu__link">{link.label}</a>
+          {link.children && (
+            <ul class="mobile-menu__sub">
+              {link.children.map((child) => (
+                <li>
+                  <a href={child.href} class="mobile-menu__sublink">{child.label}</a>
+                </li>
+              ))}
+            </ul>
+          )}
+        </li>
+      ))}
+    </ul>
+    <a href="/contact/" class="btn btn--primary" style="width:100%;margin-top:2rem;">
+      Become a Distributor
+    </a>
+  </nav>
+</div>
+
+<script>
+  const header = document.getElementById('header');
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const mobileOverlay = document.getElementById('mobileOverlay');
+
+  // Sticky header with background
+  let lastScroll = 0;
+  window.addEventListener('scroll', () => {
+    const currentScroll = window.scrollY;
+    if (currentScroll > 50) {
+      header?.classList.add('header--scrolled');
+    } else {
+      header?.classList.remove('header--scrolled');
+    }
+    lastScroll = currentScroll;
+  });
+
+  // Mobile menu toggle
+  hamburger?.addEventListener('click', () => {
+    const isOpen = mobileMenu?.classList.contains('open');
+    mobileMenu?.classList.toggle('open');
+    mobileOverlay?.classList.toggle('open');
+    hamburger?.classList.toggle('open');
+    hamburger?.setAttribute('aria-expanded', String(!isOpen));
+    document.body.style.overflow = isOpen ? '' : 'hidden';
+  });
+
+  mobileOverlay?.addEventListener('click', () => {
+    mobileMenu?.classList.remove('open');
+    mobileOverlay?.classList.remove('open');
+    hamburger?.classList.remove('open');
+    hamburger?.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  });
+</script>
+
+<style>
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding: 1.25rem 0;
+    transition: all var(--transition-base);
+  }
+
+  .header--scrolled {
+    background: rgba(1, 22, 39, 0.95);
+    backdrop-filter: blur(20px);
+    padding: 0.75rem 0;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
+  }
+
+  .header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: var(--container-wide);
+    margin-inline: auto;
+    padding-inline: var(--space-xl);
+  }
+
+  /* Logo */
+  .header__logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+    z-index: 10;
+  }
+
+  .header__logo-mark {
+    width: 44px;
+    height: 44px;
+    background: var(--color-primary);
+    border-radius: var(--border-radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform var(--transition-base);
+  }
+
+  .header__logo:hover .header__logo-mark {
+    transform: scale(1.05);
+  }
+
+  .logo-k {
+    font-family: var(--font-heading);
+    font-weight: var(--fw-bold);
+    font-size: 1.5rem;
+    color: var(--color-white);
+    line-height: 1;
+  }
+
+  .header__logo-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+  }
+
+  .header__logo-name {
+    font-family: var(--font-heading);
+    font-weight: var(--fw-bold);
+    font-size: 1.125rem;
+    color: var(--color-white);
+    letter-spacing: 0.15em;
+  }
+
+  .header__logo-sub {
+    font-family: var(--font-heading);
+    font-weight: var(--fw-medium);
+    font-size: 0.625rem;
+    color: rgba(255, 255, 255, 0.5);
+    letter-spacing: 0.25em;
+    margin-top: 2px;
+  }
+
+  /* Navigation */
+  .header__nav-list {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .header__nav-item {
+    position: relative;
+  }
+
+  .header__nav-link {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.5rem 1rem;
+    font-family: var(--font-heading);
+    font-size: 0.9rem;
+    font-weight: var(--fw-medium);
+    color: rgba(255, 255, 255, 0.8);
+    border-radius: var(--border-radius-sm);
+    transition: all var(--transition-fast);
+  }
+
+  .header__nav-link:hover {
+    color: var(--color-white);
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  .dropdown-arrow {
+    transition: transform var(--transition-fast);
+  }
+
+  .has-dropdown:hover .dropdown-arrow {
+    transform: rotate(180deg);
+  }
+
+  /* Dropdown */
+  .header__dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 200px;
+    background: var(--color-white);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-xl);
+    padding: 0.5rem;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(8px);
+    transition: all var(--transition-fast);
+  }
+
+  .has-dropdown:hover .header__dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .header__dropdown-link {
+    display: block;
+    padding: 0.625rem 1rem;
+    font-family: var(--font-heading);
+    font-size: 0.875rem;
+    font-weight: var(--fw-medium);
+    color: var(--color-navy);
+    border-radius: var(--border-radius-sm);
+    transition: all var(--transition-fast);
+  }
+
+  .header__dropdown-link:hover {
+    background: var(--color-offwhite);
+    color: var(--color-primary);
+  }
+
+  /* Actions */
+  .header__actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .btn--sm {
+    padding: 0.625rem 1.5rem;
+    font-size: 0.8125rem;
+  }
+
+  /* Hamburger */
+  .header__hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 28px;
+    height: 28px;
+    z-index: 10;
+  }
+
+  .header__hamburger span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: var(--color-white);
+    border-radius: 2px;
+    transition: all var(--transition-base);
+  }
+
+  .header__hamburger.open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .header__hamburger.open span:nth-child(2) {
+    opacity: 0;
+  }
+  .header__hamburger.open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  /* Mobile overlay */
+  .mobile-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 998;
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--transition-base);
+  }
+
+  .mobile-overlay.open {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* Mobile menu */
+  .mobile-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 320px;
+    max-width: 85vw;
+    height: 100vh;
+    background: var(--color-navy);
+    z-index: 999;
+    padding: 6rem 2rem 2rem;
+    transform: translateX(100%);
+    transition: transform var(--transition-base);
+    overflow-y: auto;
+  }
+
+  .mobile-menu.open {
+    transform: translateX(0);
+  }
+
+  .mobile-menu__link {
+    display: block;
+    padding: 0.875rem 0;
+    font-family: var(--font-heading);
+    font-size: 1.125rem;
+    font-weight: var(--fw-semibold);
+    color: var(--color-white);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .mobile-menu__sub {
+    padding-left: 1rem;
+  }
+
+  .mobile-menu__sublink {
+    display: block;
+    padding: 0.5rem 0;
+    font-family: var(--font-heading);
+    font-size: 0.9375rem;
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  @media (max-width: 900px) {
+    .header__nav { display: none; }
+    .header__actions .btn { display: none; }
+    .header__hamburger { display: flex; }
+  }
+</style>

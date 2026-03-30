@@ -1,0 +1,254 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const products = [
+  {
+    name: 'Engine Flush',
+    description: 'Formulation for removal of deposits in engines before oil change. Optimizes oil consumption and guarantees proper oil pressure.',
+    specs: ['300 mL / 10.1 Oz', 'Gasoline & Diesel', 'Turbo & DPF Safe'],
+  },
+  {
+    name: 'Engine Flush Oil',
+    description: 'Advanced flush oil formula for thorough cleaning of internal engine components and oil passages.',
+    specs: ['300 mL / 10.1 Oz', 'All Engine Types', 'Cat & DPF Safe'],
+  },
+  {
+    name: 'Fuel Injector Cleaner',
+    description: 'Precision cleaning agent for fuel injection systems. Restores spray pattern and optimizes fuel atomization.',
+    specs: ['300 mL / 10.1 Oz', 'Gasoline Engines', 'Direct & Port Injection'],
+  },
+  {
+    name: 'Diesel Injector Cleaner',
+    description: 'Specialized formula for diesel fuel injection systems. Removes carbon deposits and restores injector performance.',
+    specs: ['300 mL / 10.1 Oz', 'Diesel Engines', 'Common Rail Safe'],
+  },
+  {
+    name: 'Oil Treatment',
+    description: 'Anti-wear additive that reduces friction, stabilizes oil viscosity, and protects engine components under high stress.',
+    specs: ['300 mL / 10.1 Oz', 'All Motor Oils', 'Reduces Friction'],
+  },
+  {
+    name: 'High Mileage Oil Treatment',
+    description: 'Formulated for engines with 75,000+ miles. Reconditions seals, reduces oil consumption, and restores compression.',
+    specs: ['300 mL / 10.1 Oz', '75K+ Miles', 'Seal Conditioner'],
+  },
+  {
+    name: 'Octane Booster',
+    description: 'Increases octane rating and improves combustion efficiency. Cleans fuel system and reduces engine knock.',
+    specs: ['300 mL / 10.1 Oz', 'Gasoline Engines', 'Boosts Octane'],
+  },
+  {
+    name: 'Gas Treatment',
+    description: 'All-in-one fuel system cleaner that removes deposits, inhibits corrosion, and improves fuel economy.',
+    specs: ['300 mL / 10.1 Oz', 'Gasoline Engines', 'All-in-One'],
+  },
+  {
+    name: 'Transmission Conditioner',
+    description: 'Smooths shifting, reduces heat buildup, and extends transmission fluid life in automatic transmissions.',
+    specs: ['300 mL / 10.1 Oz', 'Automatic Trans', 'Smooths Shifting'],
+  },
+  {
+    name: 'CVT Transmission Enhancer',
+    description: 'Optimized for continuously variable transmissions. Protects belt and pulley systems under high torque.',
+    specs: ['300 mL / 10.1 Oz', 'CVT Systems', 'Belt & Pulley Safe'],
+  },
+  {
+    name: 'Engine Oil Stop Leak',
+    description: 'Reconditions and swells dried gaskets and seals to stop and prevent oil leaks without disassembly.',
+    specs: ['300 mL / 10.1 Oz', 'All Engines', 'Seal Reconditioner'],
+  },
+];
+---
+
+<BaseLayout title="Additives" description="Kolben Chemicals additives — German-engineered engine, transmission, fuel, and exhaust additives for professional automotive care.">
+
+  <section class="page-hero">
+    <div class="page-hero__bg"></div>
+    <div class="container">
+      <div class="page-hero__content animate-on-scroll">
+        <span class="section-label">Product Category</span>
+        <h1>Additives</h1>
+        <p class="page-hero__subtitle">
+          High-precision German formulations that clean internal components, reduce friction, and protect engines under real driving conditions.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="products-list">
+        {products.map((product, i) => (
+          <div class="product-item animate-on-scroll" style={`animation-delay: ${i * 50}ms`}>
+            <div class="product-item__image">
+              <div class="product-item__placeholder">
+                <span>K</span>
+              </div>
+            </div>
+            <div class="product-item__content">
+              <h3>{product.name}</h3>
+              <p>{product.description}</p>
+              <div class="product-item__specs">
+                {product.specs.map((spec) => (
+                  <span class="spec-tag">{spec}</span>
+                ))}
+              </div>
+            </div>
+            <div class="product-item__features">
+              <ul>
+                <li>Highly economical</li>
+                <li>DPF/GPF safe</li>
+                <li>Turbo compatible</li>
+                <li>Simple to use</li>
+              </ul>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .page-hero {
+    position: relative;
+    padding: 10rem 0 5rem;
+    overflow: hidden;
+  }
+
+  .page-hero__bg {
+    position: absolute;
+    inset: 0;
+    background: var(--color-navy);
+    z-index: -1;
+  }
+
+  .page-hero__bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 30% 50%, rgba(217, 73, 72, 0.12) 0%, transparent 60%);
+  }
+
+  .page-hero h1 {
+    color: var(--color-white);
+    font-size: clamp(2.25rem, 5vw, 3.5rem);
+    margin-bottom: var(--space-lg);
+  }
+
+  .page-hero__subtitle {
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.6);
+    max-width: 550px;
+  }
+
+  .products-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+
+  .product-item {
+    display: grid;
+    grid-template-columns: 140px 1fr auto;
+    gap: var(--space-xl);
+    align-items: center;
+    padding: var(--space-xl);
+    background: var(--color-white);
+    border: 1px solid var(--color-grey-200);
+    border-radius: var(--border-radius-md);
+    transition: all var(--transition-base);
+  }
+
+  .product-item:hover {
+    border-color: transparent;
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+  }
+
+  .product-item__placeholder {
+    width: 140px;
+    height: 140px;
+    background: linear-gradient(135deg, var(--color-navy) 0%, rgba(1, 22, 39, 0.85) 100%);
+    border-radius: var(--border-radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .product-item__placeholder span {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    font-weight: var(--fw-bold);
+    color: var(--color-primary);
+    opacity: 0.6;
+  }
+
+  .product-item__content h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.375rem;
+  }
+
+  .product-item__content p {
+    font-size: 0.9375rem;
+    color: var(--color-grey-600);
+    line-height: 1.6;
+    margin-bottom: var(--space-md);
+  }
+
+  .product-item__specs {
+    display: flex;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+  }
+
+  .spec-tag {
+    padding: 0.25rem 0.75rem;
+    background: var(--color-offwhite);
+    border-radius: 100px;
+    font-family: var(--font-heading);
+    font-size: 0.75rem;
+    font-weight: var(--fw-medium);
+    color: var(--color-grey-700);
+  }
+
+  .product-item__features {
+    min-width: 160px;
+  }
+
+  .product-item__features ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+  }
+
+  .product-item__features li {
+    font-size: 0.8125rem;
+    color: var(--color-grey-600);
+    padding-left: 1rem;
+    position: relative;
+  }
+
+  .product-item__features li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.5em;
+    width: 5px;
+    height: 5px;
+    background: var(--color-primary);
+    border-radius: 50%;
+  }
+
+  @media (max-width: 900px) {
+    .product-item {
+      grid-template-columns: 1fr;
+    }
+
+    .product-item__placeholder {
+      width: 100%;
+      height: 200px;
+    }
+  }
+</style>

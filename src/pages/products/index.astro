@@ -1,0 +1,253 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const categories = [
+  {
+    title: 'Additives',
+    description: 'High-precision German formulations that clean internal components, reduce friction, and protect engines under real driving conditions.',
+    href: '/products/additives/',
+    accent: '#d94948',
+    subcategories: [
+      { name: 'Engine Additives', count: 6 },
+      { name: 'Transmission Additives', count: 3 },
+      { name: 'Fuel Additives', count: 3 },
+      { name: 'Radiator Additives', count: 2 },
+      { name: 'Exhaust Additives', count: 2 },
+    ],
+  },
+  {
+    title: 'Oil & Fluids',
+    description: 'Precision-formulated oils and fluids engineered in Germany to reduce wear, control heat, and maintain system efficiency.',
+    href: '/products/oil-fluids/',
+    accent: '#2563eb',
+    subcategories: [
+      { name: 'Engine Oil', count: 4 },
+      { name: 'Transmission Fluid', count: 3 },
+      { name: 'Brake Oil', count: 2 },
+      { name: 'Coolant', count: 2 },
+    ],
+  },
+  {
+    title: 'Maintenance Products',
+    description: 'Professional-grade maintenance products developed in Germany for consistent, reliable service across all vehicle types.',
+    href: '/products/maintenance/',
+    accent: '#059669',
+    subcategories: [
+      { name: 'Car Care', count: 5 },
+      { name: 'Consumables', count: 4 },
+    ],
+  },
+];
+---
+
+<BaseLayout title="Products" description="Explore Kolben Chemicals' full range of German-engineered automotive additives, oils, fluids, and maintenance products.">
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="page-hero__bg"></div>
+    <div class="container">
+      <div class="page-hero__content animate-on-scroll">
+        <span class="section-label">Our Products</span>
+        <h1>Precision Chemistry<br />for Every System</h1>
+        <p class="page-hero__subtitle">
+          From engine additives to maintenance essentials — German-engineered solutions for professional automotive care.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Categories -->
+  <section class="section">
+    <div class="container">
+      <div class="categories">
+        {categories.map((cat, i) => (
+          <div class="category-block animate-on-scroll" style={`animation-delay: ${i * 150}ms`}>
+            <div class="category-block__header">
+              <div class="category-block__accent" style={`background: ${cat.accent}`}></div>
+              <div class="category-block__info">
+                <h2>{cat.title}</h2>
+                <p>{cat.description}</p>
+              </div>
+              <a href={cat.href} class="btn btn--outline-dark">
+                View All
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path d="M3 8H13M13 8L8 3M13 8L8 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+            </div>
+            <div class="category-block__grid">
+              {cat.subcategories.map((sub) => (
+                <div class="subcat-card">
+                  <div class="subcat-card__dot" style={`background: ${cat.accent}`}></div>
+                  <div>
+                    <h4>{sub.name}</h4>
+                    <span class="subcat-card__count">{sub.count} products</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Quality Banner -->
+  <section class="section section--dark">
+    <div class="container text-center">
+      <div class="animate-on-scroll">
+        <span class="section-label">Quality Guarantee</span>
+        <h2 class="section-title">Performance Guaranteed</h2>
+        <p class="section-subtitle" style="margin-inline: auto;">
+          Every Kolben product is formulated, tested, and certified to meet the highest automotive industry standards. ISO 9001 and IATF certified.
+        </p>
+        <div style="display: flex; justify-content: center; gap: 1rem; margin-top: 2rem; flex-wrap: wrap;">
+          <span class="quality-badge">ISO 9001 Certified</span>
+          <span class="quality-badge">IATF 16949</span>
+          <span class="quality-badge">SGS Verified</span>
+          <span class="quality-badge">OEM Approved</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .page-hero {
+    position: relative;
+    padding: 10rem 0 5rem;
+    overflow: hidden;
+  }
+
+  .page-hero__bg {
+    position: absolute;
+    inset: 0;
+    background: var(--color-navy);
+    z-index: -1;
+  }
+
+  .page-hero__bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 30% 50%, rgba(217, 73, 72, 0.12) 0%, transparent 60%);
+  }
+
+  .page-hero h1 {
+    color: var(--color-white);
+    font-size: clamp(2.25rem, 5vw, 3.5rem);
+    margin-bottom: var(--space-lg);
+  }
+
+  .page-hero__subtitle {
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.6);
+    max-width: 550px;
+  }
+
+  /* Categories */
+  .categories {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4xl);
+  }
+
+  .category-block {
+    border: 1px solid var(--color-grey-200);
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+  }
+
+  .category-block__header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2xl);
+    padding: var(--space-2xl);
+    border-bottom: 1px solid var(--color-grey-200);
+  }
+
+  .category-block__accent {
+    width: 4px;
+    height: 60px;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+
+  .category-block__info {
+    flex: 1;
+  }
+
+  .category-block__info h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.375rem;
+  }
+
+  .category-block__info p {
+    font-size: 0.9375rem;
+    color: var(--color-grey-600);
+  }
+
+  .category-block__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1px;
+    background: var(--color-grey-200);
+  }
+
+  .subcat-card {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    padding: var(--space-xl);
+    background: var(--color-white);
+    transition: background var(--transition-fast);
+    cursor: pointer;
+  }
+
+  .subcat-card:hover {
+    background: var(--color-offwhite);
+  }
+
+  .subcat-card__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .subcat-card h4 {
+    font-size: 0.9375rem;
+    margin-bottom: 0.125rem;
+  }
+
+  .subcat-card__count {
+    font-size: 0.8125rem;
+    color: var(--color-grey-600);
+  }
+
+  /* Quality badges */
+  .quality-badge {
+    display: inline-block;
+    padding: 0.625rem 1.25rem;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: var(--border-radius-sm);
+    font-family: var(--font-heading);
+    font-size: 0.875rem;
+    font-weight: var(--fw-semibold);
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  @media (max-width: 768px) {
+    .category-block__header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .category-block__accent {
+      width: 40px;
+      height: 4px;
+    }
+  }
+</style>

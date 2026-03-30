@@ -1,0 +1,328 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const milestones = [
+  { year: '2006', title: 'Founded', desc: 'Kolben Chemicals founded in Hannover, Germany. Began producing and supplying additives for renowned automotive brands.' },
+  { year: '2009', title: 'First Patent', desc: '"Kolben" brand officially launched. Independently developed first patented product — T001 Professional Fuel Tank Treatment Agent.' },
+  { year: '2010', title: 'R&D Breakthrough', desc: 'Significant progress in automotive aftermarket R&D. Achieved stable mass production across full product range.' },
+  { year: '2011', title: '10M Units', desc: 'Annual production volume surpassed 10 million units for the first time. Expanded nationwide distribution.' },
+  { year: '2016', title: 'Strategic Partnerships', desc: 'Partnerships with Geely Group (OEM), SAIC General Motors, Guanghui Group, and Donglian Group.' },
+  { year: '2020', title: 'Modern Facility', desc: 'Established 140,000 ft² modern chemical plant in Dalingshan Industrial Transfer Park. 50M bottle annual capacity.' },
+  { year: '2022', title: 'OEM Official', desc: 'Products became official OEM additives for BMW, Mercedes-Benz, Audi, Lexus, Toyota, and more.' },
+];
+
+const stats = [
+  { value: '20+', label: 'Years of Industry Experience' },
+  { value: '50M', label: 'Bottles Annual Capacity' },
+  { value: '140K', label: 'ft² Production Facility' },
+  { value: '10K+', label: 'Customers Worldwide' },
+  { value: '6', label: 'R&D Independent Labs' },
+  { value: '14+', label: 'OEM Partners Globally' },
+];
+---
+
+<BaseLayout title="About Us" description="Learn about Kolben Chemicals — German-engineered automotive chemicals since 2006. Our story, mission, and commitment to precision.">
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="page-hero__bg"></div>
+    <div class="container">
+      <div class="page-hero__content animate-on-scroll">
+        <span class="section-label">About Kolben</span>
+        <h1>Born from German<br />Engineering Tradition</h1>
+        <p class="page-hero__subtitle">
+          Dedicated to one simple belief: engines deserve precision, not compromise.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission -->
+  <section class="section">
+    <div class="container">
+      <div class="mission-grid">
+        <div class="mission-content animate-on-scroll">
+          <span class="section-label">Our Mission</span>
+          <h2>To Extend the Life of Every Engine and Elevate the Driving Experience</h2>
+          <p>
+            Founded in 2006, Kolben Chemicals is a German manufacturer of automotive chemicals integrating R&D, production, sales, and service. We serve both vehicle manufacturers through OEM/ODM services and brand owners through direct sales and distribution.
+          </p>
+          <p>
+            Our R&D team comprises registered quality engineers, chemical engineers, mechanical engineers, and electrical engineers — each bringing deep domain expertise to every formula we develop.
+          </p>
+        </div>
+        <div class="mission-stats animate-on-scroll">
+          <div class="stats-grid">
+            {stats.map((stat) => (
+              <div class="stat-card">
+                <span class="stat-card__value">{stat.value}</span>
+                <span class="stat-card__label">{stat.label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline -->
+  <section class="section section--grey">
+    <div class="container">
+      <div class="text-center animate-on-scroll">
+        <span class="section-label">Our Journey</span>
+        <h2 class="section-title">Two Decades of Precision</h2>
+        <p class="section-subtitle">Key milestones in our growth from German startup to global OEM partner.</p>
+      </div>
+
+      <div class="timeline-full">
+        {milestones.map((m, i) => (
+          <div class={`timeline-full__item animate-on-scroll ${i % 2 === 0 ? 'timeline-full__item--left' : 'timeline-full__item--right'}`}>
+            <div class="timeline-full__card">
+              <span class="timeline-full__year">{m.year}</span>
+              <h4>{m.title}</h4>
+              <p>{m.desc}</p>
+            </div>
+          </div>
+        ))}
+        <div class="timeline-full__line"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Certifications -->
+  <section class="section">
+    <div class="container text-center">
+      <div class="animate-on-scroll">
+        <span class="section-label">Certifications</span>
+        <h2 class="section-title">Quality You Can Verify</h2>
+        <p class="section-subtitle">
+          Our products and processes are certified by internationally recognized bodies.
+        </p>
+      </div>
+
+      <div class="certs-grid animate-on-scroll">
+        <div class="cert-card card">
+          <h4>ISO 9001</h4>
+          <p>Quality Management System certification ensuring consistent product quality and continuous improvement.</p>
+        </div>
+        <div class="cert-card card">
+          <h4>IATF 16949</h4>
+          <p>International Automotive Task Force standard — the highest quality standard for the automotive supply chain.</p>
+        </div>
+        <div class="cert-card card">
+          <h4>SGS Verified</h4>
+          <p>Independent inspection, verification, testing, and certification by the world's leading inspection company.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  /* Page Hero */
+  .page-hero {
+    position: relative;
+    padding: 10rem 0 5rem;
+    overflow: hidden;
+  }
+
+  .page-hero__bg {
+    position: absolute;
+    inset: 0;
+    background: var(--color-navy);
+    z-index: -1;
+  }
+
+  .page-hero__bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 30% 50%, rgba(217, 73, 72, 0.12) 0%, transparent 60%);
+  }
+
+  .page-hero h1 {
+    color: var(--color-white);
+    font-size: clamp(2.25rem, 5vw, 3.5rem);
+    margin-bottom: var(--space-lg);
+  }
+
+  .page-hero__subtitle {
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.6);
+    max-width: 550px;
+  }
+
+  /* Mission */
+  .mission-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: var(--space-4xl);
+    align-items: start;
+  }
+
+  .mission-content h2 {
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    margin-bottom: var(--space-xl);
+  }
+
+  .mission-content p {
+    margin-bottom: var(--space-md);
+    line-height: 1.8;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md);
+  }
+
+  .stat-card {
+    background: var(--color-offwhite);
+    border-radius: var(--border-radius-md);
+    padding: var(--space-xl);
+    text-align: center;
+  }
+
+  .stat-card__value {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    font-weight: var(--fw-bold);
+    color: var(--color-primary);
+    line-height: 1;
+    margin-bottom: 0.375rem;
+  }
+
+  .stat-card__label {
+    font-size: 0.8125rem;
+    color: var(--color-grey-600);
+  }
+
+  /* Timeline Full */
+  .timeline-full {
+    position: relative;
+    margin-top: var(--space-4xl);
+    max-width: 900px;
+    margin-inline: auto;
+  }
+
+  .timeline-full__line {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--color-primary), var(--color-grey-300));
+    transform: translateX(-50%);
+  }
+
+  .timeline-full__item {
+    position: relative;
+    width: 50%;
+    padding-bottom: var(--space-3xl);
+  }
+
+  .timeline-full__item--left {
+    padding-right: var(--space-3xl);
+    text-align: right;
+  }
+
+  .timeline-full__item--right {
+    margin-left: 50%;
+    padding-left: var(--space-3xl);
+  }
+
+  .timeline-full__item::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    width: 14px;
+    height: 14px;
+    background: var(--color-primary);
+    border: 3px solid var(--color-offwhite);
+    border-radius: 50%;
+    z-index: 1;
+  }
+
+  .timeline-full__item--left::before {
+    right: -7px;
+  }
+
+  .timeline-full__item--right::before {
+    left: -7px;
+  }
+
+  .timeline-full__year {
+    display: inline-block;
+    font-family: var(--font-heading);
+    font-size: 0.875rem;
+    font-weight: var(--fw-bold);
+    color: var(--color-primary);
+    letter-spacing: 0.05em;
+    margin-bottom: 0.375rem;
+  }
+
+  .timeline-full__card h4 {
+    font-size: 1.125rem;
+    margin-bottom: 0.375rem;
+  }
+
+  .timeline-full__card p {
+    font-size: 0.9375rem;
+    color: var(--color-grey-600);
+    line-height: 1.6;
+  }
+
+  /* Certs */
+  .certs-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-xl);
+    margin-top: var(--space-3xl);
+  }
+
+  .cert-card {
+    text-align: center;
+  }
+
+  .cert-card h4 {
+    font-size: 1.25rem;
+    margin-bottom: var(--space-md);
+    color: var(--color-primary);
+  }
+
+  .cert-card p {
+    font-size: 0.9375rem;
+    color: var(--color-grey-600);
+    margin-inline: auto;
+  }
+
+  @media (max-width: 900px) {
+    .mission-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .timeline-full__item,
+    .timeline-full__item--right {
+      width: 100%;
+      margin-left: 0;
+      padding-left: var(--space-2xl);
+      padding-right: 0;
+      text-align: left;
+    }
+
+    .timeline-full__line {
+      left: 0;
+    }
+
+    .timeline-full__item::before {
+      left: -7px !important;
+      right: auto !important;
+    }
+
+    .certs-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
