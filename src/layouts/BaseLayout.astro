@@ -60,11 +60,22 @@ const { title, description = 'German Precision. Engine Perfection. Premium autom
             }
           });
         },
-        { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+        { threshold: 0.05, rootMargin: '0px 0px -30px 0px' }
       );
 
       document.querySelectorAll('.animate-on-scroll').forEach((el) => {
         observer.observe(el);
+      });
+
+      // Immediately reveal elements already visible in viewport on load
+      requestAnimationFrame(() => {
+        document.querySelectorAll('.animate-on-scroll:not(.visible)').forEach((el) => {
+          const rect = el.getBoundingClientRect();
+          if (rect.top < window.innerHeight && rect.bottom > 0) {
+            el.classList.add('visible');
+            observer.unobserve(el);
+          }
+        });
       });
 
       // Re-observe on page navigation (Astro view transitions)
