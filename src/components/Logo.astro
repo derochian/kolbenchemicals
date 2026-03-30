@@ -1,0 +1,42 @@
+---
+interface Props {
+  variant?: 'color' | 'white';
+  height?: string;
+}
+
+const { variant = 'color', height = '44px' } = Astro.props;
+
+const barColor = variant === 'white' ? '#ffffff' : '#164194';
+const textColor = variant === 'white' ? '#ffffff' : '#e2001a';
+---
+
+<svg
+  viewBox="0 0 340 120"
+  xmlns="http://www.w3.org/2000/svg"
+  class="logo-svg"
+  style={`height: ${height}; width: auto;`}
+  aria-label="Kolben Chemicals"
+  role="img"
+>
+  <!-- Top bar -->
+  <rect x="10" y="8" width="320" height="14" rx="2" fill={barColor} />
+  <!-- Bottom bar -->
+  <rect x="10" y="98" width="320" height="14" rx="2" fill={barColor} />
+  <!-- KOLBEN text -->
+  <text
+    x="170"
+    y="82"
+    text-anchor="middle"
+    font-family="'Inter', 'Arial Black', 'Helvetica Neue', Arial, sans-serif"
+    font-weight="900"
+    font-size="72"
+    fill={textColor}
+    letter-spacing="1"
+  >KOLBEN</text>
+</svg>
+
+<style>
+  .logo-svg {
+    display: block;
+  }
+</style>

@@ -1,4 +1,6 @@
 ---
+import Logo from './Logo.astro';
+
 const currentYear = new Date().getFullYear();
 
 const footerLinks = {
@@ -48,7 +50,7 @@ const footerLinks = {
         <div class="footer__brand">
           <div class="footer__logo">
             <a href="/">
-              <img src="/images/kolben-logo.png" alt="Kolben Chemicals" class="footer__logo-img" />
+              <Logo variant="white" height="48px" />
             </a>
           </div>
           <p class="footer__tagline">
@@ -183,12 +185,6 @@ const footerLinks = {
   /* Brand */
   .footer__logo {
     margin-bottom: var(--space-lg);
-  }
-
-  .footer__logo-img {
-    height: 48px;
-    width: auto;
-    filter: brightness(0) invert(1);
   }
 
   .footer__tagline {

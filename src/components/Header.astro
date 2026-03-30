@@ -1,4 +1,6 @@
 ---
+import Logo from './Logo.astro';
+
 const navLinks = [
   { label: 'Home', href: '/' },
   { label: 'About', href: '/about/' },
@@ -18,7 +20,7 @@ const navLinks = [
 <header class="header" id="header">
   <div class="header__inner container--wide">
     <a href="/" class="header__logo" aria-label="Kolben Chemicals Home">
-      <img src="/images/kolben-logo.png" alt="Kolben Chemicals" class="header__logo-img" />
+      <Logo variant="white" height="44px" />
     </a>
 
     <nav class="header__nav" id="mainNav" aria-label="Main navigation">
@@ -161,16 +163,10 @@ const navLinks = [
     align-items: center;
     text-decoration: none;
     z-index: 10;
-  }
-
-  .header__logo-img {
-    height: 44px;
-    width: auto;
     transition: transform var(--transition-base);
-    filter: brightness(0) invert(1);
   }
 
-  .header__logo:hover .header__logo-img {
+  .header__logo:hover {
     transform: scale(1.05);
   }
 
