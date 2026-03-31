@@ -223,6 +223,7 @@ p {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  min-height: 44px;
   gap: var(--space-sm);
   padding: 0.875rem 2rem;
   font-family: var(--font-heading);
@@ -325,6 +326,10 @@ p {
 
   .section {
     padding-block: var(--space-4xl);
+  }
+
+  .page-hero {
+    padding: 8rem 0 3rem;
   }
 }
 

@@ -125,17 +125,6 @@ const footerLinks = {
     overflow: hidden;
   }
 
-  .footer__cta::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    right: -10%;
-    width: 500px;
-    height: 500px;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 50%;
-  }
-
   .footer__cta-inner {
     display: flex;
     align-items: center;
@@ -295,6 +284,23 @@ const footerLinks = {
     .footer__brand {
       grid-column: 1 / -1;
     }
+
+    .footer__col ul {
+      gap: 0;
+    }
+
+    .footer__col a {
+      display: flex;
+      align-items: center;
+      min-height: 44px;
+      padding: 0.5rem 0;
+    }
+
+    .footer__contact-info a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+    }
   }
 
   @media (max-width: 600px) {
@@ -305,6 +311,11 @@ const footerLinks = {
     .footer__cta-actions {
       flex-direction: column;
       width: 100%;
+    }
+
+    .footer__cta-actions .btn {
+      min-height: 48px;
+      justify-content: center;
     }
 
     .footer__bottom-inner {
