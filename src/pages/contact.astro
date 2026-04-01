@@ -122,6 +122,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
   </section>
 
+<script>
+  document.getElementById('contactForm')?.addEventListener('submit', (e) => {
+    e.preventDefault();
+  });
+</script>
+
 </BaseLayout>
 
 <style>
