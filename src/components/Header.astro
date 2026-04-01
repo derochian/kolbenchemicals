@@ -1,25 +1,27 @@
 ---
 import Logo from './Logo.astro';
 
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
 const navLinks = [
-  { label: 'Home', href: '/' },
-  { label: 'About', href: '/about/' },
+  { label: 'Home', href: `${base}/` },
+  { label: 'About', href: `${base}/about/` },
   {
     label: 'Products',
-    href: '/products/',
+    href: `${base}/products/`,
     children: [
-      { label: 'Additives', href: '/products/additives/' },
-      { label: 'Oil & Fluids', href: '/products/oil-fluids/' },
-      { label: 'Maintenance', href: '/products/maintenance/' },
+      { label: 'Additives', href: `${base}/products/additives/` },
+      { label: 'Oil & Fluids', href: `${base}/products/oil-fluids/` },
+      { label: 'Maintenance', href: `${base}/products/maintenance/` },
     ],
   },
-  { label: 'Contact', href: '/contact/' },
+  { label: 'Contact', href: `${base}/contact/` },
 ];
 ---
 
 <header class="header" id="header">
   <div class="header__inner container--wide">
-    <a href="/" class="header__logo" aria-label="Kolben Chemicals Home">
+    <a href={`${base}/`} class="header__logo" aria-label="Kolben Chemicals Home">
       <Logo variant="white" height="44px" />
     </a>
 
@@ -50,7 +52,7 @@ const navLinks = [
     </nav>
 
     <div class="header__actions">
-      <a href="/contact/" class="btn btn--primary btn--sm">
+      <a href={`${base}/contact/`} class="btn btn--primary btn--sm">
         Become a Distributor
       </a>
       <button
@@ -91,7 +93,7 @@ const navLinks = [
         </li>
       ))}
     </ul>
-    <a href="/contact/" class="btn btn--primary" style="width:100%;margin-top:2rem;">
+    <a href={`${base}/contact/`} class="btn btn--primary" style="width:100%;margin-top:2rem;">
       Become a Distributor
     </a>
   </nav>

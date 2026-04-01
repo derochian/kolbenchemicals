@@ -9,6 +9,7 @@ interface Props {
 }
 
 const { title, description = 'German Precision. Engine Perfection. Premium automotive chemicals, additives & lubricants since 2006.' } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <!doctype html>
@@ -18,7 +19,7 @@ const { title, description = 'German Precision. Engine Perfection. Premium autom
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <meta name="theme-color" content="#164194" />
-    <link rel="icon" type="image/svg+xml" href="/images/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href={`${base}/images/favicon.svg`} />
 
     <style>
       @font-face {

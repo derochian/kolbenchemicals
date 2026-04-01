@@ -1,26 +1,27 @@
 ---
 import Logo from './Logo.astro';
 
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const currentYear = new Date().getFullYear();
 
 const footerLinks = {
   additives: [
-    { label: 'Engine', href: '/products/additives/#engine' },
-    { label: 'Transmission', href: '/products/additives/#transmission' },
-    { label: 'Fuel', href: '/products/additives/#fuel' },
-    { label: 'Radiator', href: '/products/additives/#radiator' },
-    { label: 'Exhaust', href: '/products/additives/#exhaust' },
+    { label: 'Engine', href: `${base}/products/additives/#engine` },
+    { label: 'Transmission', href: `${base}/products/additives/#transmission` },
+    { label: 'Fuel', href: `${base}/products/additives/#fuel` },
+    { label: 'Radiator', href: `${base}/products/additives/#radiator` },
+    { label: 'Exhaust', href: `${base}/products/additives/#exhaust` },
   ],
   oilFluids: [
-    { label: 'Engine Oil', href: '/products/oil-fluids/#engine-oil' },
-    { label: 'Transmission Fluid', href: '/products/oil-fluids/#transmission-fluid' },
-    { label: 'Brake Oil', href: '/products/oil-fluids/#brake-oil' },
-    { label: 'Coolant', href: '/products/oil-fluids/#coolant' },
+    { label: 'Engine Oil', href: `${base}/products/oil-fluids/#engine-oil` },
+    { label: 'Transmission Fluid', href: `${base}/products/oil-fluids/#transmission-fluid` },
+    { label: 'Brake Oil', href: `${base}/products/oil-fluids/#brake-oil` },
+    { label: 'Coolant', href: `${base}/products/oil-fluids/#coolant` },
   ],
   company: [
-    { label: 'About Us', href: '/about/' },
-    { label: 'Products', href: '/products/' },
-    { label: 'Contact', href: '/contact/' },
+    { label: 'About Us', href: `${base}/about/` },
+    { label: 'Products', href: `${base}/products/` },
+    { label: 'Contact', href: `${base}/contact/` },
   ],
 };
 ---
@@ -34,8 +35,8 @@ const footerLinks = {
           <p>Join our global network of distributors and bring German-engineered quality to your market.</p>
         </div>
         <div class="footer__cta-actions">
-          <a href="/contact/" class="btn btn--primary">Become a Distributor</a>
-          <a href="/products/" class="btn btn--outline">View Products</a>
+          <a href={`${base}/contact/`} class="btn btn--primary">Become a Distributor</a>
+          <a href={`${base}/products/`} class="btn btn--outline">View Products</a>
         </div>
       </div>
     </div>
@@ -46,7 +47,7 @@ const footerLinks = {
       <div class="footer__grid">
         <div class="footer__brand">
           <div class="footer__logo">
-            <a href="/">
+            <a href={`${base}/`}>
               <Logo variant="white" height="48px" />
             </a>
           </div>

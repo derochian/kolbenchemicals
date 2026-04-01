@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
 const stats = [
   { value: '20+', label: 'Years of Experience' },
   { value: '50M', label: 'Bottles Annual Capacity' },
@@ -36,41 +38,41 @@ const productCategories = [
     title: 'Additives',
     description: 'High-precision German formulations that clean internal components, reduce friction, and protect engines under real driving conditions.',
     items: ['Engine', 'Transmission', 'Fuel', 'Radiator', 'Exhaust'],
-    href: '/products/additives/',
+    href: `${base}/products/additives/`,
     accent: 'var(--color-primary)',
   },
   {
     title: 'Oil & Fluids',
     description: 'Precision-formulated oils and fluids engineered in Germany to reduce wear, control heat, and maintain system efficiency.',
     items: ['Engine Oil', 'Transmission Fluid', 'Brake Oil', 'Coolant'],
-    href: '/products/oil-fluids/',
+    href: `${base}/products/oil-fluids/`,
     accent: 'var(--color-accent-blue)',
   },
   {
     title: 'Maintenance',
     description: 'Professional-grade maintenance products developed in Germany for consistent, reliable service across all vehicle types.',
     items: ['Car Care', 'Consumables'],
-    href: '/products/maintenance/',
+    href: `${base}/products/maintenance/`,
     accent: 'var(--color-accent-green)',
   },
 ];
 
 const brandLogos = [
-  { name: 'BMW', src: '/images/brands/bmw.png' },
-  { name: 'Mercedes-Benz', src: '/images/brands/mercedes.png' },
-  { name: 'Audi', src: '/images/brands/audi.png' },
-  { name: 'Volkswagen', src: '/images/brands/volkswagen.png' },
-  { name: 'Lexus', src: '/images/brands/lexus.png' },
-  { name: 'Toyota', src: '/images/brands/toyota.png' },
-  { name: 'Ford', src: '/images/brands/ford.png' },
-  { name: 'Honda', src: '/images/brands/honda.png' },
-  { name: 'Nissan', src: '/images/brands/nissan.png' },
-  { name: 'Jaguar', src: '/images/brands/jaguar.png' },
-  { name: 'Land Rover', src: '/images/brands/land-rover.png' },
-  { name: 'Cadillac', src: '/images/brands/cadillac.png' },
-  { name: 'Lincoln', src: '/images/brands/lincoln.png' },
-  { name: 'Jeep', src: '/images/brands/jeep.png' },
-  { name: 'Renault', src: '/images/brands/renault.png' },
+  { name: 'BMW', src: `${base}/images/brands/bmw.png` },
+  { name: 'Mercedes-Benz', src: `${base}/images/brands/mercedes.png` },
+  { name: 'Audi', src: `${base}/images/brands/audi.png` },
+  { name: 'Volkswagen', src: `${base}/images/brands/volkswagen.png` },
+  { name: 'Lexus', src: `${base}/images/brands/lexus.png` },
+  { name: 'Toyota', src: `${base}/images/brands/toyota.png` },
+  { name: 'Ford', src: `${base}/images/brands/ford.png` },
+  { name: 'Honda', src: `${base}/images/brands/honda.png` },
+  { name: 'Nissan', src: `${base}/images/brands/nissan.png` },
+  { name: 'Jaguar', src: `${base}/images/brands/jaguar.png` },
+  { name: 'Land Rover', src: `${base}/images/brands/land-rover.png` },
+  { name: 'Cadillac', src: `${base}/images/brands/cadillac.png` },
+  { name: 'Lincoln', src: `${base}/images/brands/lincoln.png` },
+  { name: 'Jeep', src: `${base}/images/brands/jeep.png` },
+  { name: 'Renault', src: `${base}/images/brands/renault.png` },
 ];
 ---
 
@@ -99,13 +101,13 @@ const brandLogos = [
         </p>
 
         <div class="hero__actions hero-enter" style="--stagger: 3">
-          <a href="/products/" class="btn btn--primary btn--lg">
+          <a href={`${base}/products/`} class="btn btn--primary btn--lg">
             Explore Products
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
               <path d="M3 8H13M13 8L8 3M13 8L8 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </a>
-          <a href="/contact/" class="btn btn--outline btn--lg">Become a Distributor</a>
+          <a href={`${base}/contact/`} class="btn btn--outline btn--lg">Become a Distributor</a>
         </div>
 
         <div class="hero__stats hero-enter" style="--stagger: 4">
@@ -229,7 +231,7 @@ const brandLogos = [
           <p>
             Our R&D team of registered quality engineers, chemical engineers, and mechanical engineers ensures every product meets the exacting standards of brands like BMW, Mercedes-Benz, and Volkswagen.
           </p>
-          <a href="/about/" class="btn btn--outline" style="margin-top: 1rem;">
+          <a href={`${base}/about/`} class="btn btn--outline" style="margin-top: 1rem;">
             Learn Our Story
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
               <path d="M3 8H13M13 8L8 3M13 8L8 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -274,8 +276,8 @@ const brandLogos = [
           Partner with Kolben Chemicals and offer your customers German-engineered quality backed by OEM certification and global logistics.
         </p>
         <div class="cta-section__actions">
-          <a href="/contact/" class="btn btn--primary btn--lg">Get in Touch</a>
-          <a href="/products/" class="btn btn--outline-dark btn--lg">Browse Catalog</a>
+          <a href={`${base}/contact/`} class="btn btn--primary btn--lg">Get in Touch</a>
+          <a href={`${base}/products/`} class="btn btn--outline-dark btn--lg">Browse Catalog</a>
         </div>
       </div>
     </div>
