@@ -1,11 +1,13 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
 const categories = [
   {
     title: 'Additives',
     description: 'High-precision German formulations that clean internal components, reduce friction, and protect engines under real driving conditions.',
-    href: '/products/additives/',
+    href: `${base}/products/additives/`,
     accent: '#e2001a',
     subcategories: [
       { name: 'Engine Additives', count: 6 },
@@ -18,7 +20,7 @@ const categories = [
   {
     title: 'Oil & Fluids',
     description: 'Precision-formulated oils and fluids engineered in Germany to reduce wear, control heat, and maintain system efficiency.',
-    href: '/products/oil-fluids/',
+    href: `${base}/products/oil-fluids/`,
     accent: '#2563eb',
     subcategories: [
       { name: 'Engine Oil', count: 4 },
@@ -30,7 +32,7 @@ const categories = [
   {
     title: 'Maintenance Products',
     description: 'Professional-grade maintenance products developed in Germany for consistent, reliable service across all vehicle types.',
-    href: '/products/maintenance/',
+    href: `${base}/products/maintenance/`,
     accent: '#059669',
     subcategories: [
       { name: 'Car Care', count: 5 },
