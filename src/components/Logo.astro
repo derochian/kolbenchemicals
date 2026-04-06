@@ -5,35 +5,25 @@ interface Props {
 }
 
 const { variant = 'color', height = '44px' } = Astro.props;
-
-const barColor = variant === 'white' ? '#ffffff' : '#164194';
-const textColor = variant === 'white' ? '#ffffff' : '#e2001a';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
-<svg
-  viewBox="0 0 340 120"
-  xmlns="http://www.w3.org/2000/svg"
-  class="logo-svg"
+<img
+  src={`${base}/images/kolben-logo.svg`}
+  alt="Kolben Chemicals"
+  class:list={['logo-img', { 'logo-img--white': variant === 'white' }]}
   style={`height: ${height}; width: auto;`}
-  aria-label="Kolben Chemicals"
-  role="img"
->
-  <rect x="10" y="8" width="320" height="14" rx="2" fill={barColor} />
-  <rect x="10" y="98" width="320" height="14" rx="2" fill={barColor} />
-  <text
-    x="170"
-    y="82"
-    text-anchor="middle"
-    font-family="'Inter', 'Arial Black', 'Helvetica Neue', Arial, sans-serif"
-    font-weight="900"
-    font-size="72"
-    fill={textColor}
-    letter-spacing="1"
-  >KOLBEN</text>
-</svg>
+  loading="eager"
+/>
 
 <style>
-  .logo-svg {
+  .logo-img {
     display: block;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .logo-img--white {
+    filter: brightness(0) invert(1);
   }
 </style>

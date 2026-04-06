@@ -188,7 +188,7 @@ p {
   font-weight: var(--fw-semibold);
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--color-primary);
+  color: var(--color-blue);
   margin-bottom: var(--space-md);
 }
 
@@ -197,7 +197,18 @@ p {
   display: inline-block;
   width: 24px;
   height: 2px;
-  background: var(--color-primary);
+  background: var(--color-blue);
+}
+
+/* Section labels on dark backgrounds need light colors */
+.section--dark .section-label,
+.page-hero .section-label {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.section--dark .section-label::before,
+.page-hero .section-label::before {
+  background: rgba(255, 255, 255, 0.4);
 }
 
 .section-title {
@@ -271,7 +282,7 @@ p {
 
 .btn--ghost {
   background: transparent;
-  color: var(--color-primary);
+  color: var(--color-blue);
   padding: 0.875rem 0;
 }
 
@@ -404,7 +415,7 @@ p {
 .divider {
   width: 60px;
   height: 3px;
-  background: var(--color-primary);
+  background: var(--color-blue);
   border-radius: 2px;
 }
 
@@ -436,14 +447,14 @@ p {
 
 /* ── Focus States ── */
 :focus-visible {
-  outline: 2px solid var(--color-primary);
+  outline: 2px solid var(--color-blue);
   outline-offset: 2px;
 }
 
 .btn:focus-visible {
-  outline: 2px solid var(--color-primary);
+  outline: 2px solid var(--color-blue);
   outline-offset: 3px;
-  box-shadow: 0 0 0 4px rgba(226, 0, 26, 0.15);
+  box-shadow: 0 0 0 4px rgba(22, 65, 148, 0.15);
 }
 
 /* ── Scroll Progress ── */
@@ -453,7 +464,7 @@ p {
   left: 0;
   width: 0%;
   height: 3px;
-  background: var(--color-primary);
+  background: var(--color-blue);
   z-index: 9999;
   transition: width 50ms linear;
 }
