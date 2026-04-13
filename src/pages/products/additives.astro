@@ -1,16 +1,25 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
 const products = [
   {
     name: 'Engine Flush',
     description: 'Formulation for removal of deposits in engines before oil change. Optimizes oil consumption and guarantees proper oil pressure.',
     specs: ['300 mL / 10.1 Oz', 'Gasoline & Diesel', 'Turbo & DPF Safe'],
+    image: `${base}/images/products/engine-flush.png`,
   },
   {
     name: 'Engine Flush Oil',
     description: 'Advanced flush oil formula for thorough cleaning of internal engine components and oil passages.',
     specs: ['300 mL / 10.1 Oz', 'All Engine Types', 'Cat & DPF Safe'],
+  },
+  {
+    name: 'Brake Cleaner',
+    description: 'High-pressure non-chlorinated brake cleaner that dissolves grease, brake dust, and oil from rotors, calipers, and drums. Evaporates quickly without residue.',
+    specs: ['400 mL / 13.5 Oz', 'Non-Chlorinated', 'Fast Evaporating'],
+    image: `${base}/images/products/brake-cleaner.png`,
   },
   {
     name: 'Fuel Injector Cleaner',
@@ -81,9 +90,13 @@ const products = [
         {products.map((product, i) => (
           <div class="product-item animate-on-scroll" style={`animation-delay: ${i * 50}ms`}>
             <div class="product-item__image">
-              <div class="product-item__placeholder">
-                <span>K</span>
-              </div>
+              {product.image ? (
+                <img src={product.image} alt={product.name} class="product-item__photo" loading="lazy" />
+              ) : (
+                <div class="product-item__placeholder">
+                  <span>K</span>
+                </div>
+              )}
             </div>
             <div class="product-item__content">
               <h3>{product.name}</h3>
@@ -177,6 +190,13 @@ const products = [
     justify-content: center;
   }
 
+  .product-item__photo {
+    width: 140px;
+    height: 140px;
+    object-fit: contain;
+    display: block;
+  }
+
   .product-item__placeholder span {
     font-family: var(--font-heading);
     font-size: 2.5rem;
@@ -246,7 +266,8 @@ const products = [
       grid-template-columns: 1fr;
     }
 
-    .product-item__placeholder {
+    .product-item__placeholder,
+    .product-item__photo {
       width: 100%;
       height: 200px;
     }
