@@ -107,16 +107,13 @@ const navLinks = [
   const mobileClose = document.getElementById('mobileClose');
 
   // Sticky header with background
-  let lastScroll = 0;
   window.addEventListener('scroll', () => {
-    const currentScroll = window.scrollY;
-    if (currentScroll > 50) {
+    if (window.scrollY > 50) {
       header?.classList.add('header--scrolled');
     } else {
       header?.classList.remove('header--scrolled');
     }
-    lastScroll = currentScroll;
-  });
+  }, { passive: true });
 
   // Get focusable elements inside mobile menu
   function getFocusableElements() {
